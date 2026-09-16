@@ -52,14 +52,14 @@
       </div>
     </section>
 
-    <!-- SEÇÃO REEL -->
+    <!-- REEL PRINCIPAL -->
     <section id="reel" style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden;">
         <div class="grayscale" style="position: absolute; inset: 0;">
-          <image-slot id="v2-reel" shape="rect" placeholder="Still do reel — aparece enquanto não houver assets/videos/reel.mp4"></image-slot>
+          <image-slot id="v2-reel" shape="rect" placeholder="Still do reel — aparece enquanto não houver assets/reel.mp4"></image-slot>
         </div>
         <sc-if value="{{ temVideo }}" hint-placeholder-val="{{ false }}">
-          <video ref="{{ video }}" src="assets/videos/reel.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+          <video ref="{{ video }}" src="assets/reel.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></video>
         </sc-if>
         <div style="position: absolute; left: var(--space-4); bottom: var(--space-4); right: var(--space-4); display: flex; align-items: center; gap: var(--space-4);">
           <span style="font-family: var(--font-heading); font-weight: 600; font-size: 15px; color: var(--color-bg); text-shadow: 0 1px 8px rgba(0,0,0,0.6);">Maracatu Ya Dandara</span>
@@ -95,7 +95,7 @@
       </div>
     </section>
 
-    <!-- TRABALHOS -->
+    <!-- SEÇÃO TRABALHOS -->
     <section id="trabalhos" style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
       <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-6);">
         <h2 style="margin: 0; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Trabalhos</h2>
@@ -258,7 +258,7 @@
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Netflix · Brand experience</p>
       
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8); overflow: hidden;">
-        <video src="assets/videos/caso1.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+        <video src="assets/caso1.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
@@ -292,7 +292,7 @@
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Cobertura de evento</p>
       
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8); overflow: hidden;">
-        <video src="assets/videos/caso2.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+        <video src="assets/caso2.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
@@ -326,7 +326,7 @@
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Cobertura de evento</p>
       
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8); overflow: hidden;">
-        <video src="assets/videos/caso3.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+        <video src="assets/caso3.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
@@ -360,7 +360,7 @@
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Cobertura de evento</p>
       
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8); overflow: hidden;">
-        <video src="assets/videos/caso4.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+        <video src="assets/caso4.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
@@ -394,7 +394,7 @@
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Filme de marca</p>
       
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8); overflow: hidden;">
-        <video src="assets/videos/caso5.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+        <video src="assets/caso5.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
@@ -427,7 +427,7 @@
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Filme de marca</p>
       
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8); overflow: hidden;">
-        <video src="assets/videos/caso6.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+        <video src="assets/caso6.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
@@ -460,7 +460,7 @@
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Clipe musical</p>
       
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8); overflow: hidden;">
-        <video src="assets/videos/caso7.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+        <video src="assets/caso7.mp4" controls autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
@@ -528,17 +528,8 @@ class Component extends DCLogic {
   video = React.createRef();
 
   componentDidMount() {
-    fetch("assets/videos/reel.mp4", { method: "HEAD" })
-      .then((r) => { 
-        if (r.ok) {
-          this.setState({ temVideo: true }); 
-        } else {
-          // Tenta no caminho antigo se o novo não for encontrado
-          fetch("assets/reel.mp4", { method: "HEAD" }).then(r2 => {
-            if(r2.ok) this.setState({ temVideo: true });
-          });
-        }
-      })
+    fetch("assets/reel.mp4", { method: "HEAD" })
+      .then((r) => { if (r.ok) this.setState({ temVideo: true }); })
       .catch(() => {});
   }
 
@@ -594,7 +585,7 @@ class Component extends DCLogic {
       temVideo: !!this.state.temVideo,
       legendaReel: this.state.temVideo
         ? "O vídeo roda sozinho, em loop e sem som — os navegadores só liberam áudio depois de um clique."
-        : "Coloque seu mp4 em assets/videos/reel.mp4 e ele passa a rodar aqui em loop.",
+        : "Coloque seu mp4 em assets/reel.mp4 e ele passa a rodar aqui em loop.",
       alternarSom: this.alternarSom,
       rotuloSom: this.state.som ? "Som ligado" : "Ligar som",
       estiloGrade,
