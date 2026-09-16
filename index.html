@@ -12,326 +12,639 @@
 <script src="_ds/modernist-19f120e6-3e63-4669-9a7e-c0309a295108/_ds_bundle.js"></script>
 <script src="./image-slot.js"></script>
 <style>
-  body { margin: 0; }
-  a { color: var(--color-accent-700); }
+  body { margin: 0; background: #201e1d; }
+  a { color: #f3f2f2; }
   a:hover { color: var(--color-accent); }
+  ::selection { background: var(--color-accent); color: #fff; }
+  .trilho { scrollbar-width: thin; scrollbar-color: color-mix(in srgb, #f3f2f2 30%, transparent) transparent; }
+  .trilho::-webkit-scrollbar { height: 6px; }
+  .trilho::-webkit-scrollbar-thumb { background: color-mix(in srgb, #f3f2f2 30%, transparent); }
+  @keyframes marquee-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee { mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
+  .marquee-track { animation: marquee-slide 38s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-track img { opacity: 0.68; transition: opacity 0.25s ease; flex: none; }
+  .marquee-track img:hover { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { mask-image: none; -webkit-mask-image: none; }
+    .marquee-track { animation: none; flex-wrap: wrap; width: auto !important; row-gap: var(--space-6); }
+    .marquee-track img[aria-hidden] { display: none; }
+  }
 </style>
 </helmet>
 
-<div style="background: var(--color-bg); color: var(--color-text); min-height: 100vh;">
+<div style="background: var(--color-text); color: var(--color-bg); min-height: 100vh; font-family: var(--font-body);">
 
-  <header style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-4); padding: var(--space-4) var(--space-6); border-bottom: 2px solid var(--color-divider); position: sticky; top: 0; background: var(--color-bg); z-index: 10;">
-    <a href="#topo" onClick="{{ irParaHome }}" style="font-family: var(--font-heading); font-weight: 800; font-size: 15px; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; color: var(--color-text);">Vitor Santos</a>
-    <nav style="display: flex; flex-wrap: wrap; gap: var(--space-6); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">
-      <a href="#trabalhos" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-text);" style-hover="color: var(--color-accent);">Trabalhos</a>
-      <a href="#servicos" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-text);" style-hover="color: var(--color-accent);">Serviços</a>
-      <a href="#sobre" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-text);" style-hover="color: var(--color-accent);">Sobre</a>
-      <a href="#contato" style="text-decoration: none; color: var(--color-accent-700);" style-hover="color: var(--color-accent);">Contato</a>
-    </nav>
-  </header>
+  
 
   <sc-if value="{{ naHome }}" hint-placeholder-val="{{ true }}">
   <div>
-    <section id="topo" style="padding: var(--space-8) var(--space-6) var(--space-6);">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: end; border-bottom: 2px solid var(--color-divider); padding-bottom: var(--space-6);">
-        <h1 style="font-size: clamp(44px, 8vw, 96px); line-height: 0.92; letter-spacing: -0.035em; text-transform: uppercase; margin: 0; max-width: 12ch;">Vitor Santos</h1>
-        <div style="max-width: 48ch;">
-          <p style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-3);">Diretor · Diretor de fotografia · Edição</p>
-          <p style="font-size: 17px; line-height: 1.5; margin: 0 0 var(--space-4);">Eu dirijo, fotografo e monto. Filme publicitário, conteúdo de marca, evento e institucional — do tratamento visual até a entrega colorida, com equipe enxuta.</p>
-          <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
-            <a class="btn btn-primary" href="#contato" style="justify-content: flex-start; min-width: 200px;">Pedir orçamento</a>
-            <a class="btn btn-secondary" href="#trabalhos" style="justify-content: flex-start; min-width: 200px;">Ver trabalhos</a>
-          </div>
+    <section id="topo" style="position: relative; height: 84vh; min-height: 520px; overflow: hidden;">
+      <div class="grayscale" style="position: absolute; inset: 0;">
+        <image-slot id="v2-hero" shape="rect" fit="cover" placeholder="Solte aqui o frame de abertura — horizontal, alta resolução" src="./img_3934-2-mu2338e1-4pts.jpg"></image-slot>
+      </div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in srgb, var(--color-text) 92%, transparent) 0%, color-mix(in srgb, var(--color-text) 35%, transparent) 55%, transparent 100%); pointer-events: none; display: block"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-6); max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-4); pointer-events: none;">
+        <p style="margin: 0; font-size: 14px; color: color-mix(in srgb, var(--color-bg) 70%, transparent);">Vitor Santos · Maceió, Brasil</p>
+        <h1 style="margin: 0; font-family: var(--font-heading); font-weight: 800; font-size: clamp(40px, 8.5vw, 116px); line-height: 0.9; letter-spacing: -0.04em;">Diretor &amp; diretor de fotografia.</h1>
+        <p style="margin: 0; font-size: 16px; color: color-mix(in srgb, var(--color-bg) 78%, transparent);">Direção · Direção de Fotografia · Edição&nbsp;</p>
+        <div style="pointer-events: auto;">
+          <a href="#reel" style="display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;">Ver o reel</a>
         </div>
       </div>
     </section>
 
-    <section style="padding: 0 var(--space-6) var(--space-8);">
-      <div class="grayscale" style="width: 100%; aspect-ratio: 21 / 9; background: var(--color-neutral-200);">
-        <image-slot id="hero-still" shape="rect" placeholder="Solte aqui um still largo — o frame que melhor representa seu trabalho"></image-slot>
+    <section id="reel" style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+      <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden;">
+        <div class="grayscale" style="position: absolute; inset: 0;">
+          <image-slot id="v2-reel" shape="rect" placeholder="Still do reel — aparece enquanto não houver assets/reel.mp4"></image-slot>
+        </div>
+        <sc-if value="{{ temVideo }}" hint-placeholder-val="{{ false }}">
+          <video ref="{{ video }}" src="assets/reel.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+        </sc-if>
+        <div style="position: absolute; left: var(--space-4); bottom: var(--space-4); right: var(--space-4); display: flex; align-items: center; gap: var(--space-4);">
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: 15px; color: var(--color-bg); text-shadow: 0 1px 8px rgba(0,0,0,0.6);">Maracatu Ya Dandara</span>
+          <sc-if value="{{ temVideo }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ alternarSom }}" style="margin-left: auto; background: color-mix(in srgb, #000 45%, transparent); border: 1px solid color-mix(in srgb, var(--color-bg) 40%, transparent); color: var(--color-bg); cursor: pointer; font-family: var(--font-body); font-size: 13px; padding: var(--space-2) var(--space-3);" style-hover="border-color: var(--color-accent); color: var(--color-accent);">{{ rotuloSom }}</button>
+          </sc-if>
+        </div>
+      </div>
+      <p style="margin: var(--space-2) 0 0; font-size: 12px; color: color-mix(in srgb, var(--color-bg) 55%, transparent);">{{ legendaReel }}</p>
+    </section>
+
+    <section style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
+      <p style="margin: 0 0 var(--space-4); font-size: 13px; color: color-mix(in srgb, var(--color-bg) 55%, transparent);">Quem eu filmei</p>
+      <div class="marquee" style="overflow: hidden; border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); padding: var(--space-6) 0;">
+        <div class="marquee-track" style="display: flex; align-items: center; gap: var(--space-8); width: max-content;">
+          <img src="assets/logos/netflix.png" alt="Netflix" style="height: 30px; width: auto;">
+          <img src="assets/logos/celebration.png" alt="Réveillon Celebration" style="height: 58px; width: auto;">
+          <img src="assets/logos/brahma.png" alt="Brahma" style="height: 28px; width: auto;">
+          <img src="assets/logos/hopbros.png" alt="Hop Bros" style="height: 44px; width: auto;">
+          <img src="assets/logos/md.png" alt="Moura Dubeux" style="height: 40px; width: auto;">
+          <img src="assets/logos/comafer.png" alt="Comafer" style="height: 26px; width: auto;">
+          <img src="assets/logos/parque.png" alt="Parque Shopping" style="height: 38px; width: auto;">
+          <img src="assets/logos/maikai.png" alt="Maikai" style="height: 20px; width: auto;">
+          <img src="assets/logos/netflix.png" alt="" aria-hidden="true" style="height: 30px; width: auto;">
+          <img src="assets/logos/celebration.png" alt="" aria-hidden="true" style="height: 58px; width: auto;">
+          <img src="assets/logos/brahma.png" alt="" aria-hidden="true" style="height: 28px; width: auto;">
+          <img src="assets/logos/hopbros.png" alt="" aria-hidden="true" style="height: 44px; width: auto;">
+          <img src="assets/logos/md.png" alt="" aria-hidden="true" style="height: 40px; width: auto;">
+          <img src="assets/logos/comafer.png" alt="" aria-hidden="true" style="height: 26px; width: auto;">
+          <img src="assets/logos/parque.png" alt="" aria-hidden="true" style="height: 38px; width: auto;">
+          <img src="assets/logos/maikai.png" alt="" aria-hidden="true" style="height: 20px; width: auto;">
+        </div>
       </div>
     </section>
 
-    <section id="trabalhos" style="padding: 0 var(--space-6) var(--space-8);">
-      <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-4); border-top: 2px solid var(--color-divider); padding-top: var(--space-4); margin-bottom: var(--space-6);">
-        <h2 style="margin: 0; text-transform: uppercase; letter-spacing: -0.02em;">Trabalhos selecionados</h2>
-        <span class="text-muted" style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;">Três projetos</span>
+    <section id="trabalhos" style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
+      <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-6);">
+        <h2 style="margin: 0; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Trabalhos</h2>
+        <div style="display: flex; gap: var(--space-4);">
+          <button onClick="{{ filtrarTodos }}" style="background: transparent; border: 0; border-bottom: 2px solid {{ linhaTodos }}; cursor: pointer; color: {{ corTodos }}; font-family: var(--font-body); font-size: 14px; padding: 0 0 var(--space-1);" style-hover="color: var(--color-accent);">Todos</button>
+          <button onClick="{{ filtrarPublicidade }}" style="background: transparent; border: 0; border-bottom: 2px solid {{ linhaMarca }}; cursor: pointer; color: {{ corMarca }}; font-family: var(--font-body); font-size: 14px; padding: 0 0 var(--space-1);" style-hover="color: var(--color-accent);">Marca</button>
+          <button onClick="{{ filtrarEventos }}" style="background: transparent; border: 0; border-bottom: 2px solid {{ linhaEvento }}; cursor: pointer; color: {{ corEvento }}; font-family: var(--font-body); font-size: 14px; padding: 0 0 var(--space-1);" style-hover="color: var(--color-accent);">Evento</button>
+          <button onClick="{{ filtrarClipes }}" style="background: transparent; border: 0; border-bottom: 2px solid {{ linhaClipe }}; cursor: pointer; color: {{ corClipe }}; font-family: var(--font-body); font-size: 14px; padding: 0 0 var(--space-1);" style-hover="color: var(--color-accent);">Clipes musicais</button>
+          <sc-if value="{{ carrossel }}" hint-placeholder-val="{{ true }}">
+            <span style="display: inline-flex; gap: var(--space-2); margin-left: var(--space-4);">
+              <button onClick="{{ irEsquerda }}" aria-label="Anterior" style="width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid color-mix(in srgb, var(--color-bg) 30%, transparent); color: var(--color-bg); cursor: pointer; font-size: 14px;" style-hover="border-color: var(--color-accent); color: var(--color-accent);">←</button>
+              <button onClick="{{ irDireita }}" aria-label="Próximo" style="width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid color-mix(in srgb, var(--color-bg) 30%, transparent); color: var(--color-bg); cursor: pointer; font-size: 14px;" style-hover="border-color: var(--color-accent); color: var(--color-accent);">→</button>
+            </span>
+          </sc-if>
+        </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-6);">
-        <article style="display: flex; flex-direction: column; gap: var(--space-3);">
-          <div class="grayscale" style="width: 100%; aspect-ratio: 3 / 2; background: var(--color-neutral-200);">
-            <image-slot id="proj-01" shape="rect" placeholder="Still — Dramalândia"></image-slot>
-          </div>
-          <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2);">
-            <div style="display: flex; gap: var(--space-3); align-items: baseline;">
-              <span style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700);">01</span>
-              <h3 style="margin: 0; font-size: 21px; letter-spacing: -0.02em;">Dramalândia — Mansão Velho Chico</h3>
+      <div class="trilho" ref="{{ trilho }}" style="{{ estiloGrade }}">
+        <sc-if value="{{ ver1 }}" hint-placeholder-val="{{ true }}">
+          <article style="{{ estiloCard }}" onClick="{{ abrirCaso1 }}">
+            <div style="width: 100%; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--color-bg) 10%, transparent);">
+              <image-slot id="v2-proj-01" shape="rect" placeholder="Still — Dramalândia"></image-slot>
             </div>
-            <p class="text-muted" style="font-size: 13px; margin: var(--space-1) 0 var(--space-3);">Netflix · Brand experience</p>
-            <button class="btn btn-secondary" onClick="{{ abrirCaso1 }}" style="justify-content: flex-start; min-width: 160px;">Ver o case</button>
-          </div>
-        </article>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-3);">
+              <h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em;">Dramalândia · Netflix</h3>
+              <span style="font-size: 13px; color: color-mix(in srgb, var(--color-bg) 60%, transparent); white-space: nowrap;">2026</span>
+            </div>
+          </article>
+        </sc-if>
 
-        <article style="display: flex; flex-direction: column; gap: var(--space-3);">
-          <div class="grayscale" style="width: 100%; aspect-ratio: 3 / 2; background: var(--color-neutral-200);">
-            <image-slot id="proj-02" shape="rect" placeholder="Still — Camarote Celebration"></image-slot>
-          </div>
-          <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2);">
-            <div style="display: flex; gap: var(--space-3); align-items: baseline;">
-              <span style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700);">02</span>
-              <h3 style="margin: 0; font-size: 21px; letter-spacing: -0.02em;">Camarote Celebration</h3>
+        <sc-if value="{{ ver2 }}" hint-placeholder-val="{{ true }}">
+          <article style="{{ estiloCard }}" onClick="{{ abrirCaso2 }}">
+            <div style="width: 100%; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--color-bg) 10%, transparent);">
+              <image-slot id="v2-proj-02" shape="rect" placeholder="Still — Camarote Celebration"></image-slot>
             </div>
-            <p class="text-muted" style="font-size: 13px; margin: var(--space-1) 0 var(--space-3);">2026 · Cobertura de evento</p>
-            <button class="btn btn-secondary" onClick="{{ abrirCaso2 }}" style="justify-content: flex-start; min-width: 160px;">Ver o case</button>
-          </div>
-        </article>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-3);">
+              <h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em;">Camarote Celebration</h3>
+              <span style="font-size: 13px; color: color-mix(in srgb, var(--color-bg) 60%, transparent); white-space: nowrap;">2026</span>
+            </div>
+          </article>
+        </sc-if>
 
-        <article style="display: flex; flex-direction: column; gap: var(--space-3);">
-          <div class="grayscale" style="width: 100%; aspect-ratio: 3 / 2; background: var(--color-neutral-200);">
-            <image-slot id="proj-03" shape="rect" placeholder="Still — Maceió Marathon"></image-slot>
-          </div>
-          <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2);">
-            <div style="display: flex; gap: var(--space-3); align-items: baseline;">
-              <span style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700);">03</span>
-              <h3 style="margin: 0; font-size: 21px; letter-spacing: -0.02em;">Maceió Marathon</h3>
+        <sc-if value="{{ ver3 }}" hint-placeholder-val="{{ true }}">
+          <article style="{{ estiloCard }}" onClick="{{ abrirCaso3 }}">
+            <div style="width: 100%; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--color-bg) 10%, transparent);">
+              <image-slot id="v2-proj-03" shape="rect" placeholder="Still — Maceió Marathon"></image-slot>
             </div>
-            <p class="text-muted" style="font-size: 13px; margin: var(--space-1) 0 var(--space-3);">2026 · Cobertura de evento</p>
-            <button class="btn btn-secondary" onClick="{{ abrirCaso3 }}" style="justify-content: flex-start; min-width: 160px;">Ver o case</button>
-          </div>
-        </article>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-3);">
+              <h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em;">Maceió Marathon</h3>
+              <span style="font-size: 13px; color: color-mix(in srgb, var(--color-bg) 60%, transparent); white-space: nowrap;">2026</span>
+            </div>
+          </article>
+        </sc-if>
+
+        <sc-if value="{{ ver4 }}" hint-placeholder-val="{{ true }}">
+          <article style="{{ estiloCard }}" onClick="{{ abrirCaso4 }}">
+            <div style="width: 100%; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--color-bg) 10%, transparent);">
+              <image-slot id="v2-proj-04" shape="rect" placeholder="Still — evento"></image-slot>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-3);">
+              <h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em;">Salão do Imóvel - Ademi</h3>
+              <span style="font-size: 13px; color: color-mix(in srgb, var(--color-bg) 60%, transparent); white-space: nowrap;">2026</span>
+            </div>
+          </article>
+        </sc-if>
+
+        <sc-if value="{{ ver5 }}" hint-placeholder-val="{{ true }}">
+          <article style="{{ estiloCard }}" onClick="{{ abrirCaso5 }}">
+            <div style="width: 100%; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--color-bg) 10%, transparent);">
+              <image-slot id="v2-proj-05" shape="rect" placeholder="Still — marca"></image-slot>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-3);">
+              <h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em;">Mansão Velho Chico&nbsp;</h3>
+              <span style="font-size: 13px; color: color-mix(in srgb, var(--color-bg) 60%, transparent); white-space: nowrap;">2026</span>
+            </div>
+          </article>
+        </sc-if>
+
+        <sc-if value="{{ ver6 }}" hint-placeholder-val="{{ true }}">
+          <article style="{{ estiloCard }}" onClick="{{ abrirCaso6 }}">
+            <div style="width: 100%; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--color-bg) 10%, transparent);">
+              <image-slot id="v2-proj-06" shape="rect" placeholder="Still — marca"></image-slot>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-3);">
+              <h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em;">Nome do filme · Marca</h3>
+              <span style="font-size: 13px; color: color-mix(in srgb, var(--color-bg) 60%, transparent); white-space: nowrap;">2026</span>
+            </div>
+          </article>
+        </sc-if>
+
+        <sc-if value="{{ ver7 }}" hint-placeholder-val="{{ false }}">
+          <article style="{{ estiloCard }}" onClick="{{ abrirCaso7 }}">
+            <div style="width: 100%; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--color-bg) 10%, transparent);">
+              <image-slot id="v2-proj-07" shape="rect" placeholder="Still — clipe musical"></image-slot>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-3);">
+              <h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em;">Bia Calheiros · Audiovisual</h3>
+              <span style="font-size: 13px; color: color-mix(in srgb, var(--color-bg) 60%, transparent); white-space: nowrap;">Ano</span>
+            </div>
+          </article>
+        </sc-if>
+      </div>
+    </section>
+
+    <section id="sobre" style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: start; border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); padding-top: var(--space-8);">
+        <div class="grayscale" style="width: 100%; aspect-ratio: 4 / 5; background: color-mix(in srgb, var(--color-bg) 10%, transparent);">
+          <image-slot id="v2-retrato" shape="rect" placeholder="Retrato ou foto de set"></image-slot>
+        </div>
+        <div>
+          <h2 style="margin: 0 0 var(--space-4); font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Vitor Santos</h2>
+          <p style="font-size: 17px; line-height: 1.6; max-width: 56ch; color: color-mix(in srgb, var(--color-bg) 88%, transparent);"><span style="caret-color: rgb(161, 156, 142); color: rgb(161, 156, 142); font-family: Fraunces, Georgia, &quot;Times New Roman&quot;, serif; font-size: 16px">Eu conto histórias<span class="Apple-converted-space"> </span></span><em style="color: var(--color-accent); font-family: Fraunces, Georgia, &quot;Times New Roman&quot;, serif; font-size: 16px; text-decoration-thickness: auto; text-decoration-style: solid;">com luz, movimento e ritmo</em><span style="caret-color: rgb(161, 156, 142); color: rgb(161, 156, 142); font-family: Fraunces, Georgia, &quot;Times New Roman&quot;, serif; font-size: 16px"><span class="Apple-converted-space"> </span>— do primeiro enquadramento ao corte final.</span></p>
+          <div style="font-size: 17px; line-height: 1.6; max-width: 56ch; color: color-mix(in srgb, var(--color-bg) 88%, transparent);"><p style="margin: 0px 0px 22px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent); font-size: medium; font-family: &quot;Instrument Sans&quot;, -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; text-decoration-thickness: auto; text-decoration-style: solid;">Como diretor, sou apaixonado pelo mundo da criação. Atuo em áreas como eventos, campanhas publicitárias e branded content, sempre com o objetivo de entregar o meu melhor aos meus clientes.</p><p style="margin: 0px 0px 22px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent); font-size: medium; font-family: &quot;Instrument Sans&quot;, -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; text-decoration-thickness: auto; text-decoration-style: solid;">Iniciei minha trajetória em 2023 e, desde então, trabalhei em diversos segmentos, aprendendo continuamente e me dedicando ao máximo.</p><p style="margin: 0px 0px 22px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent); font-size: medium; font-family: &quot;Instrument Sans&quot;, -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; text-decoration-thickness: auto; text-decoration-style: solid;">Meu trabalho une narrativa e um visual forte a um padrão de produção que eleva a percepção de quem está na tela — porque cada projeto é pensado para gerar impacto real: não apenas imagens bonitas, mas conteúdo que comunica e representa a identidade de quem contrata.</p></div>
+          <a href="https://wa.me/message/VJOB7NHIWNNSP1" style="display: inline-flex; align-items: center; gap: var(--space-3); margin-top: var(--space-2); text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;">Falar comigo</a>
+        </div>
       </div>
     </section>
 
     <sc-if value="{{ mostrarServicos }}" hint-placeholder-val="{{ true }}">
-      <section id="servicos" style="padding: 0 var(--space-6) var(--space-8);">
-        <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
-          <h2 style="margin: 0 0 var(--space-6); text-transform: uppercase; letter-spacing: -0.02em;">Serviços</h2>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-8);">
-            <div style="border-top: 2px solid var(--color-accent); padding-top: var(--space-3);">
-              <h4 style="margin: 0 0 var(--space-2);">Publicidade</h4>
-              <p class="text-muted" style="font-size: 14px; margin: 0;">Filme de campanha com produtora ou direto com a marca. Assumo direção, câmera ou os dois.</p>
-            </div>
-            <div style="border-top: 2px solid var(--color-accent); padding-top: var(--space-3);">
-              <h4 style="margin: 0 0 var(--space-2);">Conteúdo para marca</h4>
-              <p class="text-muted" style="font-size: 14px; margin: 0;">Séries curtas para social, com entrega em vertical e horizontal a partir da mesma diária.</p>
-            </div>
-            <div style="border-top: 2px solid var(--color-accent); padding-top: var(--space-3);">
-              <h4 style="margin: 0 0 var(--space-2);">Eventos</h4>
-              <p class="text-muted" style="font-size: 14px; margin: 0;">Cobertura de ativação, camarote e esportivo. Filmo no ritmo do evento e entrego rápido.</p>
-            </div>
-            <div style="border-top: 2px solid var(--color-accent); padding-top: var(--space-3);">
-              <h4 style="margin: 0 0 var(--space-2);">Corporativo</h4>
-              <p class="text-muted" style="font-size: 14px; margin: 0;">Institucional, depoimento e treinamento — roteiro simples, direção de elenco não-ator.</p>
-            </div>
+      <section style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
+        <div style="border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); padding-top: var(--space-8); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-8);">
+          <div>
+            <h4 style="margin: 0 0 var(--space-2); font-size: 18px;">Publicidade e marca</h4>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Filme de campanha e conteúdo para redes sociais. Assumo todas as partes criativas do seu projeto.</p>
           </div>
-
-          <h3 style="margin: 0 0 var(--space-4); text-transform: uppercase; letter-spacing: -0.01em;">Como eu trabalho</h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-6);">
-            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-3);">
-              <p style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700); margin: 0 0 var(--space-1);">01</p>
-              <h4 style="margin: 0 0 var(--space-2);">Leitura e tratamento</h4>
-              <p class="text-muted" style="font-size: 14px; margin: 0;">Você me manda o briefing. Eu devolvo referência visual, decupagem e o tamanho de equipe que o filme pede.</p>
-            </div>
-            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-3);">
-              <p style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700); margin: 0 0 var(--space-1);">02</p>
-              <h4 style="margin: 0 0 var(--space-2);">Filmagem</h4>
-              <p class="text-muted" style="font-size: 14px; margin: 0;">Câmera, lente e luz já definidas no tratamento. Opero eu mesmo quando o projeto pede agilidade.</p>
-            </div>
-            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-3);">
-              <p style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700); margin: 0 0 var(--space-1);">03</p>
-              <h4 style="margin: 0 0 var(--space-2);">Montagem e cor</h4>
-              <p class="text-muted" style="font-size: 14px; margin: 0;">Eu monto. Até três rodadas de ajuste, cor final e entrega nos formatos que você vai publicar.</p>
-            </div>
+          <div>
+            <h4 style="margin: 0 0 var(--space-2); font-size: 18px;">Eventos</h4>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Ativação, eventos e festivais. Capto no ritmo do evento e entrego no prazo que ele exige.</p>
+          </div>
+          <div>
+            <h4 style="margin: 0 0 var(--space-2); font-size: 18px;">Musical</h4>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Clipe e vídeo de música com direção e direção de fotografia. A ideia nasce junto com o artista: ouço, discuto a referência e a gente fecha o conceito antes de filmar.</p>
+          </div>
+          <div>
+            <h4 style="margin: 0 0 var(--space-2); font-size: 18px;">Edição</h4>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Tratamento visual, diária, montagem com até três rodadas de ajuste, cor final e os formatos que você vai publicar.</p>
           </div>
         </div>
       </section>
     </sc-if>
 
-    <section id="sobre" style="padding: 0 var(--space-6) var(--space-8);">
-      <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
-        <div>
-          <h2 style="margin: 0 0 var(--space-4); text-transform: uppercase; letter-spacing: -0.02em;">Sobre</h2>
-          <p style="font-size: 16px; max-width: 58ch;">Sou Vitor Santos. Comecei [onde/quando] e hoje trabalho entre set publicitário, ativação de marca e evento. Dirijo, fotografo e monto — e é por isso que consigo defender uma decisão de câmera no set sabendo exatamente como ela vai cair no corte.</p>
-          <p style="font-size: 16px; max-width: 58ch;">Gosto de projeto com prazo curto e ideia clara. Prefiro equipe pequena, onde todo mundo sabe o que o filme precisa ser.</p>
-          <p class="text-muted" style="font-size: 12px; max-width: 58ch;">Troque os trechos entre colchetes pelos seus dados — ou me mande a informação e eu escrevo.</p>
-        </div>
-        <div class="grayscale" style="width: 100%; aspect-ratio: 4 / 5; background: var(--color-neutral-200);">
-          <image-slot id="retrato" shape="rect" placeholder="Retrato ou foto de set"></image-slot>
-        </div>
+    <section style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
+      <p style="margin: 0 0 var(--space-4); font-size: 13px; color: color-mix(in srgb, var(--color-bg) 55%, transparent);">No set</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-2);">
+        <div style="aspect-ratio: 1 / 1; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-set-1" shape="rect" placeholder="Foto de set"></image-slot></div>
+        <div style="aspect-ratio: 1 / 1; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-set-2" shape="rect" placeholder="Foto de set"></image-slot></div>
+        <div class="grayscale" style="aspect-ratio: 1 / 1; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-set-3" shape="rect" placeholder="Foto de set"></image-slot></div>
+        <div style="aspect-ratio: 1 / 1; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-set-4" shape="rect" placeholder="Foto de set"></image-slot></div>
       </div>
     </section>
-
-    <sc-if value="{{ mostrarClientes }}" hint-placeholder-val="{{ true }}">
-      <section style="padding: 0 var(--space-6) var(--space-8);">
-        <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
-          <h2 style="margin: 0 0 var(--space-4); text-transform: uppercase; letter-spacing: -0.02em;">Clientes e prêmios</h2>
-          <p class="text-muted" style="font-size: 12px; margin: 0 0 var(--space-4);">Só o que eu tenho confirmado está preenchido. Complete o resto com os nomes reais.</p>
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-4) var(--space-6);">
-            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;">Netflix</div>
-            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;">Camarote Celebration</div>
-            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;">Maceió Marathon</div>
-            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;" class="text-muted">Cliente</div>
-            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;" class="text-muted">Cliente</div>
-            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;" class="text-muted">Prêmio ou festival</div>
-          </div>
-        </div>
-      </section>
-    </sc-if>
   </div>
   </sc-if>
 
   <sc-if value="{{ caso1 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-6);">
-      <button class="btn btn-ghost" onClick="{{ irParaHome }}" style="justify-content: flex-start; padding-left: 0; margin-bottom: var(--space-6);">← Todos os trabalhos</button>
-      <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); align-items: start;">
-        <h1 style="margin: 0; font-size: clamp(34px, 5vw, 60px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; max-width: 16ch;">Dramalândia — Mansão Velho Chico</h1>
+    <section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+      <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
+      <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Dramalândia · Mansão Velho Chico</h1>
+      <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Netflix · Brand experience</p>
+      <div style="width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8);">
+        <image-slot id="v2-caso1-still" shape="rect" placeholder="Frame principal"></image-slot>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
         <div>
-          <p style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-2);">Netflix · Brand experience</p>
-          <p style="font-size: 16px; max-width: 52ch;">Ativação de marca dentro da Mansão Velho Chico. Eu [assumi direção / operei câmera / montei] — descreva em uma frase qual foi o seu papel.</p>
-          <a class="btn btn-primary" href="https://www.instagram.com/p/DdJz1LNlaAS/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="justify-content: flex-start; min-width: 200px;">Ver no Instagram</a>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O pedido</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Qual era o objetivo da marca e em quanto tempo.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O que eu fiz</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Sua função e a decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">Entrega</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Formatos, duração e onde foi publicado.]</p>
+          <a href="https://www.instagram.com/p/DdJz1LNlaAS/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="display: inline-flex; margin-top: var(--space-3); text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;">Ver no Instagram</a>
         </div>
       </div>
-      <div class="grayscale" style="width: 100%; aspect-ratio: 16 / 9; background: var(--color-neutral-200); margin: var(--space-8) 0;">
-        <image-slot id="caso1-still" shape="rect" placeholder="Frame principal do projeto"></image-slot>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
-        <div>
-          <h4 style="margin: 0 0 var(--space-2);">O pedido</h4>
-          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Qual era o objetivo da marca e em quanto tempo.]</p>
-        </div>
-        <div>
-          <h4 style="margin: 0 0 var(--space-2);">O que eu fiz</h4>
-          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
-        </div>
-        <div>
-          <h4 style="margin: 0 0 var(--space-2);">Entrega</h4>
-          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Formatos, duração e onde foi publicado.]</p>
-        </div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); margin-top: var(--space-8);">
-        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso1-a" shape="rect" placeholder="Still"></image-slot></div>
-        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso1-b" shape="rect" placeholder="Still"></image-slot></div>
-        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso1-c" shape="rect" placeholder="Still"></image-slot></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-2); margin-top: var(--space-8);">
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso1-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso1-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso1-c" shape="rect" placeholder="Still"></image-slot></div>
       </div>
     </section>
   </sc-if>
 
   <sc-if value="{{ caso2 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-6);">
-      <button class="btn btn-ghost" onClick="{{ irParaHome }}" style="justify-content: flex-start; padding-left: 0; margin-bottom: var(--space-6);">← Todos os trabalhos</button>
-      <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); align-items: start;">
-        <h1 style="margin: 0; font-size: clamp(34px, 5vw, 60px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; max-width: 16ch;">Camarote Celebration</h1>
+    <section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+      <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
+      <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Camarote Celebration</h1>
+      <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Cobertura de evento</p>
+      <div style="width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8);">
+        <image-slot id="v2-caso2-still" shape="rect" placeholder="Frame principal"></image-slot>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
         <div>
-          <p style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-2);">2026 · Cobertura de evento</p>
-          <p style="font-size: 16px; max-width: 52ch;">Cobertura do camarote em 2026. Eu [assumi direção / operei câmera / montei] — descreva em uma frase qual foi o seu papel.</p>
-          <a class="btn btn-primary" href="https://www.instagram.com/reel/DUlEp_Ejpyy/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="justify-content: flex-start; min-width: 200px;">Ver no Instagram</a>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O pedido</h4>
+          <p></p><p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent); position: relative">Criação de um <b>aftermovie</b> que imprimisse toda a energia e experiência do evento.</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O que eu fiz</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Direção, direção de fotografia, operação de câmera e edição.</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">Entrega</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">O material foi publicado nas redes sócias oficiais do Celebration.</p>
+          <a href="https://www.instagram.comhttps://www.instagram.com/reel/DUlEp_Ejpyy/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==reel/DUlEp_Ejpyy/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="display: inline-flex; margin-top: var(--space-3); text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;">Ver no Instagram</a>
         </div>
       </div>
-      <div class="grayscale" style="width: 100%; aspect-ratio: 16 / 9; background: var(--color-neutral-200); margin: var(--space-8) 0;">
-        <image-slot id="caso2-still" shape="rect" placeholder="Frame principal do projeto"></image-slot>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
-        <div>
-          <h4 style="margin: 0 0 var(--space-2);">O pedido</h4>
-          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Qual era o objetivo da marca e em quanto tempo.]</p>
-        </div>
-        <div>
-          <h4 style="margin: 0 0 var(--space-2);">O que eu fiz</h4>
-          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
-        </div>
-        <div>
-          <h4 style="margin: 0 0 var(--space-2);">Entrega</h4>
-          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Formatos, duração e onde foi publicado.]</p>
-        </div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); margin-top: var(--space-8);">
-        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso2-a" shape="rect" placeholder="Still"></image-slot></div>
-        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso2-b" shape="rect" placeholder="Still"></image-slot></div>
-        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso2-c" shape="rect" placeholder="Still"></image-slot></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-2); margin-top: var(--space-8);">
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso2-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso2-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso2-c" shape="rect" placeholder="Still"></image-slot></div>
       </div>
     </section>
   </sc-if>
 
   <sc-if value="{{ caso3 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-6);">
-      <button class="btn btn-ghost" onClick="{{ irParaHome }}" style="justify-content: flex-start; padding-left: 0; margin-bottom: var(--space-6);">← Todos os trabalhos</button>
-      <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); align-items: start;">
-        <h1 style="margin: 0; font-size: clamp(34px, 5vw, 60px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; max-width: 16ch;">Maceió Marathon</h1>
+    <header style="position: sticky; top: 0; z-index: 20; padding: var(--space-3) var(--space-6); background: color-mix(in srgb, var(--color-text) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent);">
+    <div style="max-width: 1320px; margin: 0 auto; width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4);">
+    <a href="#topo" onClick="{{ irParaHome }}" style="font-family: var(--font-heading); font-weight: 400; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; color: var(--color-bg);">vitor<span style="font-weight: 800;">santos</span></a>
+    <nav style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-6); font-size: 14px;">
+      <a href="#trabalhos" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Trabalhos</a>
+      <a href="#sobre" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Sobre</a>
+      <a href="#contato" style="text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: 2px;">Contato</a>
+    </nav>
+    </div>
+  </header><section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+      <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
+      <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Maceió Marathon</h1>
+      <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Cobertura de evento</p>
+      <div style="width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8);">
+        <image-slot id="v2-caso3-still" shape="rect" placeholder="Frame principal"></image-slot>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
         <div>
-          <p style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-2);">2026 · Cobertura de evento</p>
-          <p style="font-size: 16px; max-width: 52ch;">Cobertura da maratona em 2026. Eu [assumi direção / operei câmera / montei] — descreva em uma frase qual foi o seu papel.</p>
-          <a class="btn btn-primary" href="https://www.instagram.com/p/DcvoiuNFeuT/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="justify-content: flex-start; min-width: 200px;">Ver no Instagram</a>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O pedido</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Retratar os desafios dos alunos da MD Running assessoria&nbsp;em correr uma meia maratona e uma maratona.</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O que eu fiz</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Direção de fotografia e operação de câmera.</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">Entrega</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Trabalho entregue 1 dia após a finalização do evento.</p>
+          <a href="https://www.instagram.com/p/DcvoiuNFeuT/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="display: inline-flex; margin-top: var(--space-3); text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;">Ver no Instagram</a>
         </div>
       </div>
-      <div class="grayscale" style="width: 100%; aspect-ratio: 16 / 9; background: var(--color-neutral-200); margin: var(--space-8) 0;">
-        <image-slot id="caso3-still" shape="rect" placeholder="Frame principal do projeto"></image-slot>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
-        <div>
-          <h4 style="margin: 0 0 var(--space-2);">O pedido</h4>
-          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Qual era o objetivo do cliente e em quanto tempo.]</p>
-        </div>
-        <div>
-          <h4 style="margin: 0 0 var(--space-2);">O que eu fiz</h4>
-          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
-        </div>
-        <div>
-          <h4 style="margin: 0 0 var(--space-2);">Entrega</h4>
-          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Formatos, duração e onde foi publicado.]</p>
-        </div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); margin-top: var(--space-8);">
-        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso3-a" shape="rect" placeholder="Still"></image-slot></div>
-        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso3-b" shape="rect" placeholder="Still"></image-slot></div>
-        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso3-c" shape="rect" placeholder="Still"></image-slot></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-2); margin-top: var(--space-8);">
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso3-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso3-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso3-c" shape="rect" placeholder="Still"></image-slot></div>
       </div>
     </section>
   </sc-if>
 
-  <section id="contato" style="background: var(--color-accent); color: #fff; padding: var(--space-8) var(--space-6);">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); align-items: end;">
-      <h2 style="margin: 0; font-size: clamp(36px, 6vw, 68px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; max-width: 18ch;">Me conta o projeto e eu te mando o orçamento</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--space-2); font-size: 17px;">
-        <a href="mailto:seu@email.com" style="color: #fff; font-family: var(--font-heading); font-weight: 800; font-size: 24px; text-decoration: none; letter-spacing: -0.01em;" style-hover="text-decoration: underline;">seu@email.com</a>
-        <span>WhatsApp +55 00 00000-0000</span>
-        <span>Instagram · @seuperfil</span>
+  <sc-if value="{{ caso4 }}" hint-placeholder-val="{{ false }}">
+    <header style="position: sticky; top: 0; z-index: 20; padding: var(--space-3) var(--space-6); background: color-mix(in srgb, var(--color-text) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent);">
+    <div style="max-width: 1320px; margin: 0 auto; width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4);">
+    <a href="#topo" onClick="{{ irParaHome }}" style="font-family: var(--font-heading); font-weight: 400; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; color: var(--color-bg);">vitor<span style="font-weight: 800;">santos</span></a>
+    <nav style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-6); font-size: 14px;">
+      <a href="#trabalhos" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Trabalhos</a>
+      <a href="#sobre" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Sobre</a>
+      <a href="#contato" style="text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: 2px;">Contato</a>
+    </nav>
+    </div>
+  </header><section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+      <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
+      <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Salão do Imóvel - Ademi</h1>
+      <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Ano · Cobertura de evento</p>
+      <div style="width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8);">
+        <image-slot id="v2-caso4-still" shape="rect" placeholder="Frame principal"></image-slot>
       </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O pedido</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Imprimi e divulgar a experiencia e oportunidade do salão do imóvel.</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O que eu fiz</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Direção, DOP, edição</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">Entrega</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Publicado nas redes da Ademi</p>
+          <span style="display: inline-flex; margin-top: var(--space-3); color: color-mix(in srgb, var(--color-bg) 45%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;"><a href="https://www.instagram.com/reel/DcWDfwrJpss/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==">[link do filme]</a></span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-2); margin-top: var(--space-8);">
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso4-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso4-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso4-c" shape="rect" placeholder="Still"></image-slot></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ caso5 }}" hint-placeholder-val="{{ false }}">
+    <header style="position: sticky; top: 0; z-index: 20; padding: var(--space-3) var(--space-6); background: color-mix(in srgb, var(--color-text) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent);">
+    <div style="max-width: 1320px; margin: 0 auto; width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4);">
+    <a href="#topo" onClick="{{ irParaHome }}" style="font-family: var(--font-heading); font-weight: 400; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; color: var(--color-bg);">vitor<span style="font-weight: 800;">santos</span></a>
+    <nav style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-6); font-size: 14px;">
+      <a href="#trabalhos" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Trabalhos</a>
+      <a href="#sobre" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Sobre</a>
+      <a href="#contato" style="text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: 2px;">Contato</a>
+    </nav>
+    </div>
+  </header><section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+      <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
+      <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Nome do filme · Marca</h1>
+      <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Ano · Filme de marca</p>
+      <div style="width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8);">
+        <image-slot id="v2-caso5-still" shape="rect" placeholder="Frame principal"></image-slot>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O pedido</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Qual era o objetivo da marca e em quanto tempo.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O que eu fiz</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Sua função e a decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">Entrega</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Formatos, duração e onde foi publicado.]</p>
+          <span style="display: inline-flex; margin-top: var(--space-3); color: color-mix(in srgb, var(--color-bg) 45%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;">[link do filme]</span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-2); margin-top: var(--space-8);">
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso5-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso5-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso5-c" shape="rect" placeholder="Still"></image-slot></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ caso6 }}" hint-placeholder-val="{{ false }}">
+    <header style="position: sticky; top: 0; z-index: 20; padding: var(--space-3) var(--space-6); background: color-mix(in srgb, var(--color-text) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent);">
+    <div style="max-width: 1320px; margin: 0 auto; width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4);">
+    <a href="#topo" onClick="{{ irParaHome }}" style="font-family: var(--font-heading); font-weight: 400; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; color: var(--color-bg);">vitor<span style="font-weight: 800;">santos</span></a>
+    <nav style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-6); font-size: 14px;">
+      <a href="#trabalhos" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Trabalhos</a>
+      <a href="#sobre" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Sobre</a>
+      <a href="#contato" style="text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: 2px;">Contato</a>
+    </nav>
+    </div>
+  </header><section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+      <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
+      <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Nome do filme · Marca</h1>
+      <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Ano · Filme de marca</p>
+      <div style="width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8);">
+        <image-slot id="v2-caso6-still" shape="rect" placeholder="Frame principal"></image-slot>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O pedido</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Qual era o objetivo da marca e em quanto tempo.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O que eu fiz</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Sua função e a decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">Entrega</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Formatos, duração e onde foi publicado.]</p>
+          <span style="display: inline-flex; margin-top: var(--space-3); color: color-mix(in srgb, var(--color-bg) 45%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;">[link do filme]</span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-2); margin-top: var(--space-8);">
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso6-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso6-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso6-c" shape="rect" placeholder="Still"></image-slot></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ caso7 }}" hint-placeholder-val="{{ false }}">
+    <header style="position: sticky; top: 0; z-index: 20; padding: var(--space-3) var(--space-6); background: color-mix(in srgb, var(--color-text) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent);">
+    <div style="max-width: 1320px; margin: 0 auto; width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4);">
+    <a href="#topo" onClick="{{ irParaHome }}" style="font-family: var(--font-heading); font-weight: 400; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; color: var(--color-bg);">vitor<span style="font-weight: 800;">santos</span></a>
+    <nav style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-6); font-size: 14px;">
+      <a href="#trabalhos" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Trabalhos</a>
+      <a href="#sobre" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-bg);">Sobre</a>
+      <a href="#contato" style="text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: 2px;">Contato</a>
+    </nav>
+    </div>
+  </header><section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+      <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
+      <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Bia Calheiros · Audiovisual</h1>
+      <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Ano · Clipe musical</p>
+      <div style="width: 100%; aspect-ratio: 16 / 9; background: color-mix(in srgb, var(--color-bg) 10%, transparent); margin-bottom: var(--space-8);">
+        <image-slot id="v2-caso7-still" shape="rect" placeholder="Frame principal"></image-slot>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O pedido</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[A ideia do clipe e o que o artista pediu.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O que eu fiz</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Sua função e a decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">Entrega</h4>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">[Formatos, duração e onde foi publicado.]</p>
+          <span style="display: inline-flex; margin-top: var(--space-3); color: color-mix(in srgb, var(--color-bg) 45%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;">[link do filme]</span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-2); margin-top: var(--space-8);">
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso7-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso7-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso7-c" shape="rect" placeholder="Still"></image-slot></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section id="contato" style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto; border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); position: relative">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: start; position: relative">
+      <div>
+        <h2 style="margin: 0 0 var(--space-3); font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Me conta o projeto.</h2>
+        <p style="margin: 0 0 var(--space-4); font-size: 16px; max-width: 42ch; color: color-mix(in srgb, var(--color-bg) 70%, transparent);">Ideia, praça e formato de entrega já na primeira mensagem começamos a criar juntos.</p>
+        <p style="margin: 0; font-size: 16px;"><a href="mailto:seu@email.com" style="color: var(--color-bg);">euvitorhenriquesl@gmail.com</a><br><a href="https://wa.me/message/VJOB7NHIWNNSP1">WhatsApp +55 82 99623-2035</a></p>
+      </div>
+      <form onSubmit="{{ enviar }}" style="display: flex; flex-direction: column; gap: var(--space-3); max-width: 460px; position: relative">
+        <input class="input" type="text" name="nome" placeholder="Seu nome" style="background: transparent; border: 1px solid color-mix(in srgb, var(--color-bg) 30%, transparent); color: var(--color-bg);">
+        <input class="input" type="email" name="email" placeholder="Seu email" style="background: transparent; border: 1px solid color-mix(in srgb, var(--color-bg) 30%, transparent); color: var(--color-bg);">
+        <textarea class="input" name="mensagem" rows="4" placeholder="O projeto, o prazo e o formato" style="background: transparent; border: 1px solid color-mix(in srgb, var(--color-bg) 30%, transparent); color: var(--color-bg); resize: vertical;"></textarea>
+        <button class="btn btn-primary" type="submit" style="justify-content: flex-start; align-self: start; min-width: 200px;">Enviar mensagem</button><button class="btn btn-primary" type="button" style="justify-content: flex-start; align-self: start; min-width: 200px; text-align: right; background-color: var(--color-bg); color: var(--color-neutral-900)"><a href="https://wa.me/message/VJOB7NHIWNNSP1" style="color: var(--color-neutral-900)">Fale comigo no Whatsapp</a></button>
+        <sc-if value="{{ enviado }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; font-size: 14px; color: var(--color-accent-400);">Mensagem pronta para envio. O formulário precisa ser ligado a um serviço de email quando o site entrar no ar.</p>
+        </sc-if>
+      <div style="font-size: 16px; line-height: 1; font-family: Archivo, system-ui, sans-serif; position: absolute; left: 212px; top: 219px"></div></form>
     </div>
   </section>
 
-  <footer style="padding: var(--space-4) var(--space-6); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); font-size: 12px;" class="text-muted">
-    <span>Vitor Santos — 2026</span>
-    <span>Direção · Direção de fotografia · Montagem</span>
+  <footer style="padding: var(--space-6); border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); font-size: 14px;">
+    <div style="max-width: 1320px; margin: 0 auto; width: 100%; display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-8); justify-content: space-between; align-items: baseline;">
+    <span style="font-family: var(--font-heading); font-weight: 400;">vitor<span style="font-weight: 800;">santos</span> · Maceió, Brasil</span>
+    <nav style="display: flex; flex-wrap: wrap; gap: var(--space-6);">
+      <a href="https://www.instagram.com/vitorsantusz/" target="_blank" rel="noopener" style="color: color-mix(in srgb, var(--color-bg) 70%, transparent);">Instagram</a>
+      <a href="https://wa.me/message/VJOB7NHIWNNSP1" target="_blank" rel="noopener" style="color: color-mix(in srgb, var(--color-bg) 70%, transparent);">Whatsapp</a>
+      <a href="https://youtube.com/" target="_blank" rel="noopener" style="color: color-mix(in srgb, var(--color-bg) 70%, transparent);"><br></a>
+    </nav>
+    <span style="color: color-mix(in srgb, var(--color-bg) 45%, transparent);">2026</span>
+    </div>
   </footer>
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;mostrarServicos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seções&quot;},&quot;mostrarClientes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seções&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;mostrarServicos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seções&quot;}}">
 class Component extends DCLogic {
-  state = { view: "home" };
+  state = { view: "home", filtro: "todos", enviado: false };
+  trilho = React.createRef();
+  video = React.createRef();
+
+  componentDidMount() {
+    fetch("assets/reel.mp4", { method: "HEAD" })
+      .then((r) => { if (r.ok) this.setState({ temVideo: true }); })
+      .catch(() => {});
+  }
+
+  alternarSom = () => {
+    const v = this.video.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    if (!v.muted) v.play();
+    this.setState({ som: !v.muted });
+  };
+
+  rolar(dir) {
+    return () => {
+      const el = this.trilho.current;
+      if (!el) return;
+      const cards = Array.from(el.children);
+      if (!cards.length) return;
+      const passo = cards[0].getBoundingClientRect().width + 24;
+      const alvo = Math.max(0, Math.min(el.scrollWidth - el.clientWidth, el.scrollLeft + dir * passo * Math.max(1, Math.floor(el.clientWidth / passo))));
+      const semMovimento = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      el.scrollTo({ left: alvo, behavior: semMovimento ? "auto" : "smooth" });
+    };
+  }
 
   ver(v) {
-    return (e) => {
-      if (e && e.preventDefault && v === "home" && e.currentTarget && e.currentTarget.tagName === "BUTTON") e.preventDefault();
+    return () => {
       this.setState({ view: v });
       if (typeof window !== "undefined") window.scrollTo(0, 0);
     };
   }
 
+  filtrar(f) {
+    return () => this.setState({ filtro: f });
+  }
+
   renderVals() {
     const v = this.state.view;
+    const f = this.state.filtro;
+    const cat = { p1: "marca", p2: "evento", p3: "evento", p4: "evento", p5: "marca", p6: "marca", p7: "clipe" };
+    const mostra = (id) => f === "todos" || f === cat[id];
+    const linha = (k) => (f === k ? "var(--color-accent)" : "transparent");
+    const cor = (k) => (f === k ? "var(--color-bg)" : "color-mix(in srgb, var(--color-bg) 55%, transparent)");
+    const carrossel = f === "todos";
+    const estiloGrade = carrossel
+      ? { display: "flex", gap: "var(--space-6)", overflowX: "auto", scrollSnapType: "x proximity", paddingBottom: "var(--space-4)" }
+      : { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "var(--space-6)" };
+    const estiloCard = carrossel
+      ? { cursor: "pointer", flex: "0 0 clamp(280px, 40vw, 520px)", scrollSnapAlign: "start" }
+      : { cursor: "pointer" };
     return {
+      carrossel,
+      video: this.video,
+      temVideo: !!this.state.temVideo,
+      legendaReel: this.state.temVideo
+        ? "O vídeo roda sozinho, em loop e sem som — os navegadores só liberam áudio depois de um clique."
+        : "Coloque seu mp4 em assets/reel.mp4 (H.264, até ~15 MB) e ele passa a rodar aqui em loop, sem som. Enquanto isso fica o still.",
+      alternarSom: this.alternarSom,
+      rotuloSom: this.state.som ? "Som ligado" : "Ligar som",
+      estiloGrade,
+      estiloCard,
+      trilho: this.trilho,
+      irEsquerda: this.rolar(-1),
+      irDireita: this.rolar(1),
+      linhaTodos: linha("todos"), linhaMarca: linha("marca"), linhaEvento: linha("evento"), linhaClipe: linha("clipe"),
+      corTodos: cor("todos"), corMarca: cor("marca"), corEvento: cor("evento"), corClipe: cor("clipe"),
+      filtrarClipes: this.filtrar("clipe"),
+      ver4: mostra("p4"), ver5: mostra("p5"), ver6: mostra("p6"), ver7: mostra("p7"),
       naHome: v === "home",
       caso1: v === "caso1",
       caso2: v === "caso2",
       caso3: v === "caso3",
+      caso4: v === "caso4",
+      caso5: v === "caso5",
+      caso6: v === "caso6",
+      caso7: v === "caso7",
       irParaHome: this.ver("home"),
       abrirCaso1: this.ver("caso1"),
       abrirCaso2: this.ver("caso2"),
       abrirCaso3: this.ver("caso3"),
+      abrirCaso4: this.ver("caso4"),
+      abrirCaso5: this.ver("caso5"),
+      abrirCaso6: this.ver("caso6"),
+      abrirCaso7: this.ver("caso7"),
+      filtrarTodos: this.filtrar("todos"),
+      filtrarPublicidade: this.filtrar("marca"),
+      filtrarEventos: this.filtrar("evento"),
+      ver1: mostra("p1"),
+      ver2: mostra("p2"),
+      ver3: mostra("p3"),
+      enviado: this.state.enviado,
+      enviar: (e) => { e.preventDefault(); this.setState({ enviado: true }); },
       mostrarServicos: this.props.mostrarServicos ?? true,
-      mostrarClientes: this.props.mostrarClientes ?? true,
     };
   }
 }
