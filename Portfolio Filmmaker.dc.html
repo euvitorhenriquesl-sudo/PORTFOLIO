@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-19f120e6-3e63-4669-9a7e-c0309a295108/styles.css">
+<script src="_ds/modernist-19f120e6-3e63-4669-9a7e-c0309a295108/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+</style>
+</helmet>
+
+<div style="background: var(--color-bg); color: var(--color-text); min-height: 100vh;">
+
+  <header style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-4); padding: var(--space-4) var(--space-6); border-bottom: 2px solid var(--color-divider); position: sticky; top: 0; background: var(--color-bg); z-index: 10;">
+    <a href="#topo" onClick="{{ irParaHome }}" style="font-family: var(--font-heading); font-weight: 800; font-size: 15px; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; color: var(--color-text);">Vitor Santos</a>
+    <nav style="display: flex; flex-wrap: wrap; gap: var(--space-6); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">
+      <a href="#trabalhos" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-text);" style-hover="color: var(--color-accent);">Trabalhos</a>
+      <a href="#servicos" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-text);" style-hover="color: var(--color-accent);">Serviços</a>
+      <a href="#sobre" onClick="{{ irParaHome }}" style="text-decoration: none; color: var(--color-text);" style-hover="color: var(--color-accent);">Sobre</a>
+      <a href="#contato" style="text-decoration: none; color: var(--color-accent-700);" style-hover="color: var(--color-accent);">Contato</a>
+    </nav>
+  </header>
+
+  <sc-if value="{{ naHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <section id="topo" style="padding: var(--space-8) var(--space-6) var(--space-6);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); align-items: end; border-bottom: 2px solid var(--color-divider); padding-bottom: var(--space-6);">
+        <h1 style="font-size: clamp(44px, 8vw, 96px); line-height: 0.92; letter-spacing: -0.035em; text-transform: uppercase; margin: 0; max-width: 12ch;">Vitor Santos</h1>
+        <div style="max-width: 48ch;">
+          <p style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-3);">Diretor · Diretor de fotografia · Edição</p>
+          <p style="font-size: 17px; line-height: 1.5; margin: 0 0 var(--space-4);">Eu dirijo, fotografo e monto. Filme publicitário, conteúdo de marca, evento e institucional — do tratamento visual até a entrega colorida, com equipe enxuta.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+            <a class="btn btn-primary" href="#contato" style="justify-content: flex-start; min-width: 200px;">Pedir orçamento</a>
+            <a class="btn btn-secondary" href="#trabalhos" style="justify-content: flex-start; min-width: 200px;">Ver trabalhos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 0 var(--space-6) var(--space-8);">
+      <div class="grayscale" style="width: 100%; aspect-ratio: 21 / 9; background: var(--color-neutral-200);">
+        <image-slot id="hero-still" shape="rect" placeholder="Solte aqui um still largo — o frame que melhor representa seu trabalho"></image-slot>
+      </div>
+    </section>
+
+    <section id="trabalhos" style="padding: 0 var(--space-6) var(--space-8);">
+      <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-4); border-top: 2px solid var(--color-divider); padding-top: var(--space-4); margin-bottom: var(--space-6);">
+        <h2 style="margin: 0; text-transform: uppercase; letter-spacing: -0.02em;">Trabalhos selecionados</h2>
+        <span class="text-muted" style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;">Três projetos</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-6);">
+        <article style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <div class="grayscale" style="width: 100%; aspect-ratio: 3 / 2; background: var(--color-neutral-200);">
+            <image-slot id="proj-01" shape="rect" placeholder="Still — Dramalândia"></image-slot>
+          </div>
+          <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2);">
+            <div style="display: flex; gap: var(--space-3); align-items: baseline;">
+              <span style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700);">01</span>
+              <h3 style="margin: 0; font-size: 21px; letter-spacing: -0.02em;">Dramalândia — Mansão Velho Chico</h3>
+            </div>
+            <p class="text-muted" style="font-size: 13px; margin: var(--space-1) 0 var(--space-3);">Netflix · Brand experience</p>
+            <button class="btn btn-secondary" onClick="{{ abrirCaso1 }}" style="justify-content: flex-start; min-width: 160px;">Ver o case</button>
+          </div>
+        </article>
+
+        <article style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <div class="grayscale" style="width: 100%; aspect-ratio: 3 / 2; background: var(--color-neutral-200);">
+            <image-slot id="proj-02" shape="rect" placeholder="Still — Camarote Celebration"></image-slot>
+          </div>
+          <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2);">
+            <div style="display: flex; gap: var(--space-3); align-items: baseline;">
+              <span style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700);">02</span>
+              <h3 style="margin: 0; font-size: 21px; letter-spacing: -0.02em;">Camarote Celebration</h3>
+            </div>
+            <p class="text-muted" style="font-size: 13px; margin: var(--space-1) 0 var(--space-3);">2026 · Cobertura de evento</p>
+            <button class="btn btn-secondary" onClick="{{ abrirCaso2 }}" style="justify-content: flex-start; min-width: 160px;">Ver o case</button>
+          </div>
+        </article>
+
+        <article style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <div class="grayscale" style="width: 100%; aspect-ratio: 3 / 2; background: var(--color-neutral-200);">
+            <image-slot id="proj-03" shape="rect" placeholder="Still — Maceió Marathon"></image-slot>
+          </div>
+          <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2);">
+            <div style="display: flex; gap: var(--space-3); align-items: baseline;">
+              <span style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700);">03</span>
+              <h3 style="margin: 0; font-size: 21px; letter-spacing: -0.02em;">Maceió Marathon</h3>
+            </div>
+            <p class="text-muted" style="font-size: 13px; margin: var(--space-1) 0 var(--space-3);">2026 · Cobertura de evento</p>
+            <button class="btn btn-secondary" onClick="{{ abrirCaso3 }}" style="justify-content: flex-start; min-width: 160px;">Ver o case</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <sc-if value="{{ mostrarServicos }}" hint-placeholder-val="{{ true }}">
+      <section id="servicos" style="padding: 0 var(--space-6) var(--space-8);">
+        <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
+          <h2 style="margin: 0 0 var(--space-6); text-transform: uppercase; letter-spacing: -0.02em;">Serviços</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-8);">
+            <div style="border-top: 2px solid var(--color-accent); padding-top: var(--space-3);">
+              <h4 style="margin: 0 0 var(--space-2);">Publicidade</h4>
+              <p class="text-muted" style="font-size: 14px; margin: 0;">Filme de campanha com produtora ou direto com a marca. Assumo direção, câmera ou os dois.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-accent); padding-top: var(--space-3);">
+              <h4 style="margin: 0 0 var(--space-2);">Conteúdo para marca</h4>
+              <p class="text-muted" style="font-size: 14px; margin: 0;">Séries curtas para social, com entrega em vertical e horizontal a partir da mesma diária.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-accent); padding-top: var(--space-3);">
+              <h4 style="margin: 0 0 var(--space-2);">Eventos</h4>
+              <p class="text-muted" style="font-size: 14px; margin: 0;">Cobertura de ativação, camarote e esportivo. Filmo no ritmo do evento e entrego rápido.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-accent); padding-top: var(--space-3);">
+              <h4 style="margin: 0 0 var(--space-2);">Corporativo</h4>
+              <p class="text-muted" style="font-size: 14px; margin: 0;">Institucional, depoimento e treinamento — roteiro simples, direção de elenco não-ator.</p>
+            </div>
+          </div>
+
+          <h3 style="margin: 0 0 var(--space-4); text-transform: uppercase; letter-spacing: -0.01em;">Como eu trabalho</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-6);">
+            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-3);">
+              <p style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700); margin: 0 0 var(--space-1);">01</p>
+              <h4 style="margin: 0 0 var(--space-2);">Leitura e tratamento</h4>
+              <p class="text-muted" style="font-size: 14px; margin: 0;">Você me manda o briefing. Eu devolvo referência visual, decupagem e o tamanho de equipe que o filme pede.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-3);">
+              <p style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700); margin: 0 0 var(--space-1);">02</p>
+              <h4 style="margin: 0 0 var(--space-2);">Filmagem</h4>
+              <p class="text-muted" style="font-size: 14px; margin: 0;">Câmera, lente e luz já definidas no tratamento. Opero eu mesmo quando o projeto pede agilidade.</p>
+            </div>
+            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-3);">
+              <p style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--color-accent-700); margin: 0 0 var(--space-1);">03</p>
+              <h4 style="margin: 0 0 var(--space-2);">Montagem e cor</h4>
+              <p class="text-muted" style="font-size: 14px; margin: 0;">Eu monto. Até três rodadas de ajuste, cor final e entrega nos formatos que você vai publicar.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <section id="sobre" style="padding: 0 var(--space-6) var(--space-8);">
+      <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
+        <div>
+          <h2 style="margin: 0 0 var(--space-4); text-transform: uppercase; letter-spacing: -0.02em;">Sobre</h2>
+          <p style="font-size: 16px; max-width: 58ch;">Sou Vitor Santos. Comecei [onde/quando] e hoje trabalho entre set publicitário, ativação de marca e evento. Dirijo, fotografo e monto — e é por isso que consigo defender uma decisão de câmera no set sabendo exatamente como ela vai cair no corte.</p>
+          <p style="font-size: 16px; max-width: 58ch;">Gosto de projeto com prazo curto e ideia clara. Prefiro equipe pequena, onde todo mundo sabe o que o filme precisa ser.</p>
+          <p class="text-muted" style="font-size: 12px; max-width: 58ch;">Troque os trechos entre colchetes pelos seus dados — ou me mande a informação e eu escrevo.</p>
+        </div>
+        <div class="grayscale" style="width: 100%; aspect-ratio: 4 / 5; background: var(--color-neutral-200);">
+          <image-slot id="retrato" shape="rect" placeholder="Retrato ou foto de set"></image-slot>
+        </div>
+      </div>
+    </section>
+
+    <sc-if value="{{ mostrarClientes }}" hint-placeholder-val="{{ true }}">
+      <section style="padding: 0 var(--space-6) var(--space-8);">
+        <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
+          <h2 style="margin: 0 0 var(--space-4); text-transform: uppercase; letter-spacing: -0.02em;">Clientes e prêmios</h2>
+          <p class="text-muted" style="font-size: 12px; margin: 0 0 var(--space-4);">Só o que eu tenho confirmado está preenchido. Complete o resto com os nomes reais.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-4) var(--space-6);">
+            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;">Netflix</div>
+            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;">Camarote Celebration</div>
+            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;">Maceió Marathon</div>
+            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;" class="text-muted">Cliente</div>
+            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;" class="text-muted">Cliente</div>
+            <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-2); font-family: var(--font-heading); font-weight: 600; font-size: 14px;" class="text-muted">Prêmio ou festival</div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ caso1 }}" hint-placeholder-val="{{ false }}">
+    <section style="padding: var(--space-6);">
+      <button class="btn btn-ghost" onClick="{{ irParaHome }}" style="justify-content: flex-start; padding-left: 0; margin-bottom: var(--space-6);">← Todos os trabalhos</button>
+      <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); align-items: start;">
+        <h1 style="margin: 0; font-size: clamp(34px, 5vw, 60px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; max-width: 16ch;">Dramalândia — Mansão Velho Chico</h1>
+        <div>
+          <p style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-2);">Netflix · Brand experience</p>
+          <p style="font-size: 16px; max-width: 52ch;">Ativação de marca dentro da Mansão Velho Chico. Eu [assumi direção / operei câmera / montei] — descreva em uma frase qual foi o seu papel.</p>
+          <a class="btn btn-primary" href="https://www.instagram.com/p/DdJz1LNlaAS/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="justify-content: flex-start; min-width: 200px;">Ver no Instagram</a>
+        </div>
+      </div>
+      <div class="grayscale" style="width: 100%; aspect-ratio: 16 / 9; background: var(--color-neutral-200); margin: var(--space-8) 0;">
+        <image-slot id="caso1-still" shape="rect" placeholder="Frame principal do projeto"></image-slot>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
+        <div>
+          <h4 style="margin: 0 0 var(--space-2);">O pedido</h4>
+          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Qual era o objetivo da marca e em quanto tempo.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2);">O que eu fiz</h4>
+          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2);">Entrega</h4>
+          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Formatos, duração e onde foi publicado.]</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); margin-top: var(--space-8);">
+        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso1-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso1-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso1-c" shape="rect" placeholder="Still"></image-slot></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ caso2 }}" hint-placeholder-val="{{ false }}">
+    <section style="padding: var(--space-6);">
+      <button class="btn btn-ghost" onClick="{{ irParaHome }}" style="justify-content: flex-start; padding-left: 0; margin-bottom: var(--space-6);">← Todos os trabalhos</button>
+      <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); align-items: start;">
+        <h1 style="margin: 0; font-size: clamp(34px, 5vw, 60px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; max-width: 16ch;">Camarote Celebration</h1>
+        <div>
+          <p style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-2);">2026 · Cobertura de evento</p>
+          <p style="font-size: 16px; max-width: 52ch;">Cobertura do camarote em 2026. Eu [assumi direção / operei câmera / montei] — descreva em uma frase qual foi o seu papel.</p>
+          <a class="btn btn-primary" href="https://www.instagram.com/reel/DUlEp_Ejpyy/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="justify-content: flex-start; min-width: 200px;">Ver no Instagram</a>
+        </div>
+      </div>
+      <div class="grayscale" style="width: 100%; aspect-ratio: 16 / 9; background: var(--color-neutral-200); margin: var(--space-8) 0;">
+        <image-slot id="caso2-still" shape="rect" placeholder="Frame principal do projeto"></image-slot>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
+        <div>
+          <h4 style="margin: 0 0 var(--space-2);">O pedido</h4>
+          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Qual era o objetivo da marca e em quanto tempo.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2);">O que eu fiz</h4>
+          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2);">Entrega</h4>
+          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Formatos, duração e onde foi publicado.]</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); margin-top: var(--space-8);">
+        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso2-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso2-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso2-c" shape="rect" placeholder="Still"></image-slot></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ caso3 }}" hint-placeholder-val="{{ false }}">
+    <section style="padding: var(--space-6);">
+      <button class="btn btn-ghost" onClick="{{ irParaHome }}" style="justify-content: flex-start; padding-left: 0; margin-bottom: var(--space-6);">← Todos os trabalhos</button>
+      <div style="border-top: 2px solid var(--color-divider); padding-top: var(--space-4); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); align-items: start;">
+        <h1 style="margin: 0; font-size: clamp(34px, 5vw, 60px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; max-width: 16ch;">Maceió Marathon</h1>
+        <div>
+          <p style="font-family: var(--font-heading); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 var(--space-2);">2026 · Cobertura de evento</p>
+          <p style="font-size: 16px; max-width: 52ch;">Cobertura da maratona em 2026. Eu [assumi direção / operei câmera / montei] — descreva em uma frase qual foi o seu papel.</p>
+          <a class="btn btn-primary" href="https://www.instagram.com/p/DcvoiuNFeuT/?utm_source=ig_web_copy_link&amp;stkn=MzRlODBiNWFlZA==" target="_blank" rel="noopener" style="justify-content: flex-start; min-width: 200px;">Ver no Instagram</a>
+        </div>
+      </div>
+      <div class="grayscale" style="width: 100%; aspect-ratio: 16 / 9; background: var(--color-neutral-200); margin: var(--space-8) 0;">
+        <image-slot id="caso3-still" shape="rect" placeholder="Frame principal do projeto"></image-slot>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); border-top: 2px solid var(--color-divider); padding-top: var(--space-4);">
+        <div>
+          <h4 style="margin: 0 0 var(--space-2);">O pedido</h4>
+          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Qual era o objetivo do cliente e em quanto tempo.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2);">O que eu fiz</h4>
+          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Decisão de câmera, luz ou ritmo que resolveu o filme.]</p>
+        </div>
+        <div>
+          <h4 style="margin: 0 0 var(--space-2);">Entrega</h4>
+          <p class="text-muted" style="font-size: 15px; max-width: 46ch;">[Formatos, duração e onde foi publicado.]</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); margin-top: var(--space-8);">
+        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso3-a" shape="rect" placeholder="Still"></image-slot></div>
+        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso3-b" shape="rect" placeholder="Still"></image-slot></div>
+        <div class="grayscale" style="aspect-ratio: 3 / 2; background: var(--color-neutral-200);"><image-slot id="caso3-c" shape="rect" placeholder="Still"></image-slot></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section id="contato" style="background: var(--color-accent); color: #fff; padding: var(--space-8) var(--space-6);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); align-items: end;">
+      <h2 style="margin: 0; font-size: clamp(36px, 6vw, 68px); line-height: 0.95; letter-spacing: -0.03em; text-transform: uppercase; max-width: 18ch;">Me conta o projeto e eu te mando o orçamento</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--space-2); font-size: 17px;">
+        <a href="mailto:seu@email.com" style="color: #fff; font-family: var(--font-heading); font-weight: 800; font-size: 24px; text-decoration: none; letter-spacing: -0.01em;" style-hover="text-decoration: underline;">seu@email.com</a>
+        <span>WhatsApp +55 00 00000-0000</span>
+        <span>Instagram · @seuperfil</span>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding: var(--space-4) var(--space-6); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); font-size: 12px;" class="text-muted">
+    <span>Vitor Santos — 2026</span>
+    <span>Direção · Direção de fotografia · Montagem</span>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mostrarServicos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seções&quot;},&quot;mostrarClientes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seções&quot;}}">
+class Component extends DCLogic {
+  state = { view: "home" };
+
+  ver(v) {
+    return (e) => {
+      if (e && e.preventDefault && v === "home" && e.currentTarget && e.currentTarget.tagName === "BUTTON") e.preventDefault();
+      this.setState({ view: v });
+      if (typeof window !== "undefined") window.scrollTo(0, 0);
+    };
+  }
+
+  renderVals() {
+    const v = this.state.view;
+    return {
+      naHome: v === "home",
+      caso1: v === "caso1",
+      caso2: v === "caso2",
+      caso3: v === "caso3",
+      irParaHome: this.ver("home"),
+      abrirCaso1: this.ver("caso1"),
+      abrirCaso2: this.ver("caso2"),
+      abrirCaso3: this.ver("caso3"),
+      mostrarServicos: this.props.mostrarServicos ?? true,
+      mostrarClientes: this.props.mostrarClientes ?? true,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
