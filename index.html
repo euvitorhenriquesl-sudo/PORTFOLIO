@@ -41,6 +41,19 @@
 </helmet>
 
 <div style="background: var(--color-text); color: var(--color-bg); min-height: 100vh; font-family: var(--font-body);">
+  <div data-screen-label="Barra fixa" style="position: sticky; top: 0; z-index: 50; background: var(--color-text); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 22%, transparent);">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 0 0 var(--space-6); display: flex; align-items: stretch; justify-content: space-between; gap: var(--space-4); min-height: 56px;">
+      <button onClick="{{ irTopo }}" style="flex: none; background: transparent; border: 0; padding: 0; cursor: pointer; color: var(--color-bg); font-family: var(--font-heading); font-weight: 400; font-size: 18px; letter-spacing: -0.02em; white-space: nowrap;">vitor<span style="font-weight: 800;">santos</span></button>
+      <nav style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-6); overflow-x: auto; scrollbar-width: none; min-width: 0; padding-right: var(--space-4);">
+        <button onClick="{{ irTopo }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Início</button>
+        <button onClick="{{ irReel }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Reel</button>
+        <button onClick="{{ irTrabalhos }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Trabalhos</button>
+        <button onClick="{{ irSobre }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Sobre</button>
+        <button onClick="{{ irContato }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Contato</button>
+      </nav>
+      <button onClick="{{ irContato }}" style="flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); min-width: 200px; padding: 0 var(--space-6); border: 0; cursor: pointer; background: var(--color-accent); color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 15px; text-align: left;" style-hover="background: var(--color-accent-600);" style-active="background: var(--color-accent-700);"><span>Fale comigo</span><span aria-hidden="true">→</span></button>
+    </div>
+  </div>
 
   
 
@@ -530,7 +543,7 @@
     </div>
   </section>
 
-  <footer style="padding: var(--space-6); border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); font-size: 14px;">
+  <footer style="padding: var(--space-6) var(--space-6) var(--space-6); border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); font-size: 14px;">
     <div style="max-width: 1320px; margin: 0 auto; width: 100%; display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-8); justify-content: space-between; align-items: baseline;">
     <span style="font-family: var(--font-heading); font-weight: 400;">vitor<span style="font-weight: 800;">santos</span> · Maceió, Brasil</span>
     <nav style="display: flex; flex-wrap: wrap; gap: var(--space-6);">
@@ -625,6 +638,16 @@ class Component extends DCLogic {
     };
   }
 
+  irSecao(id) {
+    return () => {
+      const go = () => {
+        const el = document.getElementById(id);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
+      };
+      if (id !== "contato" && this.state.view !== "home") { this.setState({ view: "home" }, () => setTimeout(go, 60)); } else go();
+    };
+  }
+
   ver(v) {
     return () => {
       this.setState({ view: v });
@@ -695,6 +718,11 @@ class Component extends DCLogic {
       caso6: v === "caso6",
       caso7: v === "caso7",
       irParaHome: this.ver("home"),
+      irTopo: this.irSecao("topo"),
+      irReel: this.irSecao("reel"),
+      irTrabalhos: this.irSecao("trabalhos"),
+      irSobre: this.irSecao("sobre"),
+      irContato: this.irSecao("contato"),
       abrirCaso1: this.ver("caso1"),
       abrirCaso2: this.ver("caso2"),
       abrirCaso3: this.ver("caso3"),
