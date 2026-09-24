@@ -32,7 +32,13 @@
   .marquee:hover .marquee-track { animation-play-state: paused; }
   .marquee-track img { opacity: 0.68; transition: opacity 0.25s ease; flex: none; }
   .marquee-track img:hover { opacity: 1; }
+  .marquee-claro .marquee-track img { filter: brightness(0); opacity: 0.75; }
+  .marquee-claro .marquee-track img:hover { opacity: 1; }
+  .set-track { animation: marquee-slide 48s linear infinite; }
+  .marquee:hover .set-track { animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce) {
+    .set-track { animation: none; flex-wrap: wrap; width: auto !important; }
+    .set-track [aria-hidden] { display: none; }
     .marquee { mask-image: none; -webkit-mask-image: none; }
     .marquee-track { animation: none; flex-wrap: wrap; width: auto !important; row-gap: var(--space-6); }
     .marquee-track img[aria-hidden] { display: none; }
@@ -42,7 +48,7 @@
 
 <div style="background: var(--color-text); color: var(--color-bg); min-height: 100vh; font-family: var(--font-body);">
   <div data-screen-label="Barra fixa" style="position: sticky; top: 0; z-index: 50; background: var(--color-text); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 22%, transparent);">
-    <div style="max-width: 1320px; margin: 0 auto; padding: 0 0 0 var(--space-6); display: flex; align-items: stretch; justify-content: space-between; gap: var(--space-4); min-height: 56px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 0 0 var(--space-4); display: flex; align-items: stretch; justify-content: space-between; gap: var(--space-2); min-height: 56px;">
       <button onClick="{{ irTopo }}" style="flex: none; background: transparent; border: 0; padding: 0; cursor: pointer; color: var(--color-bg); font-family: var(--font-heading); font-weight: 400; font-size: 18px; letter-spacing: -0.02em; white-space: nowrap;">vitor<span style="font-weight: 800;">santos</span></button>
       <sc-if value="{{ barraLarga }}" hint-placeholder-val="{{ true }}">
       <nav style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-6); overflow-x: auto; scrollbar-width: none; min-width: 0; padding-right: var(--space-4);">
@@ -54,9 +60,9 @@
       </nav>
       </sc-if>
       <sc-if value="{{ barraEstreita }}" hint-placeholder-val="{{ false }}">
-      <button onClick="{{ alternarMenu }}" aria-expanded="{{ menuAberto }}" style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-2); padding: 0 var(--space-4); background: transparent; border: 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-bg); min-height: 56px;">{{ rotuloMenu }}</button>
+      <button onClick="{{ alternarMenu }}" aria-expanded="{{ menuAberto }}" style="flex: 1; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-2); padding: 0 var(--space-3); background: transparent; border: 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-bg); min-height: 56px;">{{ rotuloMenu }}</button>
       </sc-if>
-      <button onClick="{{ irContato }}" style="flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-width: 0; padding: 0 var(--space-4); border: 0; cursor: pointer; background: var(--color-accent); color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 15px; text-align: left;" style-hover="background: var(--color-accent-600);" style-active="background: var(--color-accent-700);"><span>Fale comigo</span><span aria-hidden="true">→</span></button>
+      <button onClick="{{ irContato }}" style="flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); min-width: 0; padding: 0 var(--space-4); border: 0; cursor: pointer; background: var(--color-accent); white-space: nowrap; color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 15px; text-align: left;" style-hover="background: var(--color-accent-600);" style-active="background: var(--color-accent-700);"><span>Fale comigo</span><span aria-hidden="true">→</span></button>
     </div>
     <sc-if value="{{ barraEstreita }}" hint-placeholder-val="{{ false }}">
       <nav aria-hidden="{{ menuOculto }}" style="{{ estiloMenu }}">
@@ -73,6 +79,7 @@
 
   <sc-if value="{{ naHome }}" hint-placeholder-val="{{ true }}">
   <div>
+    <div data-screen-label="Início + Reel" style="width: calc(100% - 2 * var(--space-3)); margin: var(--space-3) auto; border-radius: 28px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
     <section id="topo" style="position: relative; height: 84vh; min-height: 520px; overflow: hidden;">
       <div class="grayscale" style="position: absolute; inset: 0;">
         <img src="assets/img/v2-hero.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 58.74882952644481%; display: block;">
@@ -88,7 +95,7 @@
       </div>
     </section>
 
-    <section id="reel" style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+    <section id="reel" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: var(--space-8) var(--space-6);">
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden;">
         <img src="assets/reel-poster.jpg" alt="Frame do reel Brand Experience - Mirante Sunset Bar" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
         <iframe ref="{{ montarVimeo }}" src="https://player.vimeo.com/video/1229622864?autoplay=1&amp;muted=1&amp;loop=1&amp;autopause=0&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Reel" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none;"></iframe>
@@ -98,10 +105,11 @@
         </div>
       </div>
     </section>
+    </div>
 
-    <section style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
-      <p style="margin: 0 0 var(--space-4); font-size: 13px; color: color-mix(in srgb, var(--color-bg) 55%, transparent);">Quem eu filmei</p>
-      <div class="marquee" style="overflow: hidden; border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); padding: var(--space-6) 0;">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: var(--color-bg); color: var(--color-text);">
+      <p style="margin: 0 0 var(--space-4); font-size: 13px; color: color-mix(in srgb, var(--color-text) 55%, transparent);">Quem eu filmei</p>
+      <div class="marquee marquee-claro" style="overflow: hidden; padding: var(--space-4) 0 0;">
         <div class="marquee-track" style="display: flex; align-items: center; gap: var(--space-8); width: max-content;">
           <img src="assets/logos/netflix.png" alt="Netflix" style="height: 30px; width: auto;">
           <img src="assets/logos/celebration.png" alt="Réveillon Celebration" style="height: 58px; width: auto;">
@@ -123,7 +131,7 @@
       </div>
     </section>
 
-    <section id="trabalhos" style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
+    <section id="trabalhos" style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
       <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-6);">
         <h2 style="margin: 0; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Trabalhos</h2>
         <div style="display: flex; gap: var(--space-4);">
@@ -228,8 +236,8 @@
       </div>
     </section>
 
-    <section id="sobre" style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: start; border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); padding-top: var(--space-8);">
+    <section id="sobre" style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: start;">
         <div class="grayscale" style="width: 100%; aspect-ratio: 4 / 5; background: color-mix(in srgb, var(--color-bg) 10%, transparent);">
           <img src="assets/img/v2-retrato.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;">
         </div>
@@ -243,42 +251,48 @@
     </section>
 
     <sc-if value="{{ mostrarServicos }}" hint-placeholder-val="{{ true }}">
-      <section style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
-        <div style="border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); padding-top: var(--space-8); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-8);">
+      <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: var(--color-bg); color: var(--color-text);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-8);">
           <div>
             <h4 style="margin: 0 0 var(--space-2); font-size: 18px;">Publicidade e marca</h4>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Filme de campanha e conteúdo para redes sociais. Assumo todas as partes criativas do seu projeto.</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 65%, transparent);">Filme de campanha e conteúdo para redes sociais. Assumo todas as partes criativas do seu projeto.</p>
           </div>
           <div>
             <h4 style="margin: 0 0 var(--space-2); font-size: 18px;">Eventos</h4>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Ativações, eventos e festivais. Capto no ritmo do evento e entrego no prazo que ele exige.</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 65%, transparent);">Ativações, eventos e festivais. Capto no ritmo do evento e entrego no prazo que ele exige.</p>
           </div>
           <div>
             <h4 style="margin: 0 0 var(--space-2); font-size: 18px;">Musical</h4>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Filmes musicais com direção. A ideia nasce junto com o artista: ouço, discuto a referência e a gente fecha o conceito antes de filmar.</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 65%, transparent);">Filmes musicais com direção. A ideia nasce junto com o artista: ouço, discuto a referência e a gente fecha o conceito antes de filmar.</p>
           </div>
           <div>
             <h4 style="margin: 0 0 var(--space-2); font-size: 18px;">Edição</h4>
-            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Montagem, sound design, color grading e os formatos que você vai publicar. Aqui contamos a história do projeto.&nbsp;</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 65%, transparent);">Montagem, sound design, color grading e os formatos que você vai publicar. Aqui contamos a história do projeto.&nbsp;</p>
           </div>
         </div>
       </section>
     </sc-if>
 
-    <section style="padding: 0 var(--space-6) var(--space-8); max-width: 1320px; margin: 0 auto;">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
       <p style="margin: 0 0 var(--space-4); font-size: 13px; color: color-mix(in srgb, var(--color-bg) 55%, transparent);">No set</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-2);">
-        <div style="aspect-ratio: 1 / 1; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-1.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 63.2900140224359% 50%; display: block;"></div>
-        <div style="aspect-ratio: 1 / 1; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-2.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;"></div>
-        <div class="grayscale" style="aspect-ratio: 1 / 1; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-3.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;"></div>
-        <div style="aspect-ratio: 1 / 1; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-4.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;"></div>
+      <div class="marquee" style="overflow: hidden;">
+        <div class="set-track" style="display: flex; gap: var(--space-2); width: max-content;">
+          <div style="flex: none; width: clamp(220px, 28vw, 320px); aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-1.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 63.2900140224359% 50%; display: block;"></div>
+          <div style="flex: none; width: clamp(220px, 28vw, 320px); aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-2.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;"></div>
+          <div class="grayscale" style="flex: none; width: clamp(220px, 28vw, 320px); aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-3.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;"></div>
+          <div style="flex: none; width: clamp(220px, 28vw, 320px); aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-4.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;"></div>
+          <div aria-hidden="true" style="flex: none; width: clamp(220px, 28vw, 320px); aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-1.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 63.2900140224359% 50%; display: block;"></div>
+          <div aria-hidden="true" style="flex: none; width: clamp(220px, 28vw, 320px); aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-2.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;"></div>
+          <div aria-hidden="true" class="grayscale" style="flex: none; width: clamp(220px, 28vw, 320px); aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-3.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;"></div>
+          <div aria-hidden="true" style="flex: none; width: clamp(220px, 28vw, 320px); aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><img src="assets/img/v2-set-4.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block;"></div>
+        </div>
       </div>
     </section>
   </div>
   </sc-if>
 
   <sc-if value="{{ caso1 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
       <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
       <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Dramalândia · Mansão Velho Chico</h1>
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Netflix · Brand experience</p>
@@ -310,7 +324,7 @@
   </sc-if>
 
   <sc-if value="{{ caso2 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
       <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
       <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Camarote Celebration</h1>
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Cobertura de evento</p>
@@ -341,7 +355,7 @@
   </sc-if>
 
   <sc-if value="{{ caso3 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
       <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
       <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Maceió Marathon</h1>
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Cobertura de evento</p>
@@ -373,7 +387,7 @@
   </sc-if>
 
   <sc-if value="{{ caso4 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
       <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
       <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Salão do Imóvel - Ademi</h1>
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Cobertura de evento</p>
@@ -404,7 +418,7 @@
   </sc-if>
 
   <sc-if value="{{ caso5 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
       <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
       <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Mansão Velho Chico</h1>
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Filme de marca</p>
@@ -460,7 +474,7 @@
   </sc-if>
 
   <sc-if value="{{ caso6 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
       <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
       <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Parque Shopping - Multi</h1>
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Filme de marca</p>
@@ -507,7 +521,7 @@
   </sc-if>
 
   <sc-if value="{{ caso7 }}" hint-placeholder-val="{{ false }}">
-    <section style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto;">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
       <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
       <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Bia Calheiros · Audiovisual</h1>
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Clipe musical</p>
@@ -538,7 +552,7 @@
     </section>
   </sc-if>
 
-  <section id="contato" style="padding: var(--space-8) var(--space-6); max-width: 1320px; margin: 0 auto; border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); position: relative">
+  <section id="contato" style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text)); position: relative">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: start; position: relative">
       <div>
         <h2 style="margin: 0 0 var(--space-3); font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Me conta o projeto.</h2>
@@ -557,7 +571,7 @@
     </div>
   </section>
 
-  <footer style="padding: var(--space-6) var(--space-6) var(--space-6); border-top: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); font-size: 14px;">
+  <footer style="padding: var(--space-6) var(--space-6) var(--space-6); font-size: 14px;">
     <div style="max-width: 1320px; margin: 0 auto; width: 100%; display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-8); justify-content: space-between; align-items: baseline;">
     <span style="font-family: var(--font-heading); font-weight: 400;">vitor<span style="font-weight: 800;">santos</span> · Maceió, Brasil</span>
     <nav style="display: flex; flex-wrap: wrap; gap: var(--space-6);">
