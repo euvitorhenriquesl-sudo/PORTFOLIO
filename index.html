@@ -44,15 +44,29 @@
   <div data-screen-label="Barra fixa" style="position: sticky; top: 0; z-index: 50; background: var(--color-text); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 22%, transparent);">
     <div style="max-width: 1320px; margin: 0 auto; padding: 0 0 0 var(--space-6); display: flex; align-items: stretch; justify-content: space-between; gap: var(--space-4); min-height: 56px;">
       <button onClick="{{ irTopo }}" style="flex: none; background: transparent; border: 0; padding: 0; cursor: pointer; color: var(--color-bg); font-family: var(--font-heading); font-weight: 400; font-size: 18px; letter-spacing: -0.02em; white-space: nowrap;">vitor<span style="font-weight: 800;">santos</span></button>
+      <sc-if value="{{ barraLarga }}" hint-placeholder-val="{{ true }}">
       <nav style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-6); overflow-x: auto; scrollbar-width: none; min-width: 0; padding-right: var(--space-4);">
-        <button onClick="{{ irTopo }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Início</button>
-        <button onClick="{{ irReel }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Reel</button>
-        <button onClick="{{ irTrabalhos }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Trabalhos</button>
-        <button onClick="{{ irSobre }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Sobre</button>
-        <button onClick="{{ irContato }}" style="background: transparent; border: 0; padding: var(--space-2) 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: color-mix(in srgb, var(--color-bg) 70%, transparent); white-space: nowrap;" style-hover="color: var(--color-bg);">Contato</button>
+        <button onClick="{{ irTopo }}" style="{{ estiloLinkTopo }}" style-hover="color: var(--color-bg);">Início</button>
+        <button onClick="{{ irReel }}" style="{{ estiloLinkReel }}" style-hover="color: var(--color-bg);">Reel</button>
+        <button onClick="{{ irTrabalhos }}" style="{{ estiloLinkTrabalhos }}" style-hover="color: var(--color-bg);">Trabalhos</button>
+        <button onClick="{{ irSobre }}" style="{{ estiloLinkSobre }}" style-hover="color: var(--color-bg);">Sobre</button>
+        <button onClick="{{ irContato }}" style="{{ estiloLinkContato }}" style-hover="color: var(--color-bg);">Contato</button>
       </nav>
-      <button onClick="{{ irContato }}" style="flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); min-width: 200px; padding: 0 var(--space-6); border: 0; cursor: pointer; background: var(--color-accent); color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 15px; text-align: left;" style-hover="background: var(--color-accent-600);" style-active="background: var(--color-accent-700);"><span>Fale comigo</span><span aria-hidden="true">→</span></button>
+      </sc-if>
+      <sc-if value="{{ barraEstreita }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ alternarMenu }}" aria-expanded="{{ menuAberto }}" style="flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-2); padding: 0 var(--space-4); background: transparent; border: 0; cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--color-bg); min-height: 56px;">{{ rotuloMenu }}</button>
+      </sc-if>
+      <button onClick="{{ irContato }}" style="flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-width: 0; padding: 0 var(--space-4); border: 0; cursor: pointer; background: var(--color-accent); color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 15px; text-align: left;" style-hover="background: var(--color-accent-600);" style-active="background: var(--color-accent-700);"><span>Fale comigo</span><span aria-hidden="true">→</span></button>
     </div>
+    <sc-if value="{{ barraEstreita }}" hint-placeholder-val="{{ false }}">
+      <nav aria-hidden="{{ menuOculto }}" style="{{ estiloMenu }}">
+        <button onClick="{{ menuTopo }}" style="display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 52px; padding: 0 var(--space-6); background: transparent; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); cursor: pointer; font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-bg); text-align: left;" style-active="color: var(--color-accent-400);"><span style="{{ estiloMenuTopo }}">Início</span><span aria-hidden="true" style="font-size: 14px; font-weight: 400; color: color-mix(in srgb, var(--color-bg) 35%, transparent);">→</span></button>
+        <button onClick="{{ menuReel }}" style="display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 52px; padding: 0 var(--space-6); background: transparent; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); cursor: pointer; font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-bg); text-align: left;" style-active="color: var(--color-accent-400);"><span style="{{ estiloMenuReel }}">Reel</span><span aria-hidden="true" style="font-size: 14px; font-weight: 400; color: color-mix(in srgb, var(--color-bg) 35%, transparent);">→</span></button>
+        <button onClick="{{ menuTrabalhos }}" style="display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 52px; padding: 0 var(--space-6); background: transparent; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); cursor: pointer; font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-bg); text-align: left;" style-active="color: var(--color-accent-400);"><span style="{{ estiloMenuTrabalhos }}">Trabalhos</span><span aria-hidden="true" style="font-size: 14px; font-weight: 400; color: color-mix(in srgb, var(--color-bg) 35%, transparent);">→</span></button>
+        <button onClick="{{ menuSobre }}" style="display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 52px; padding: 0 var(--space-6); background: transparent; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); cursor: pointer; font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-bg); text-align: left;" style-active="color: var(--color-accent-400);"><span style="{{ estiloMenuSobre }}">Sobre</span><span aria-hidden="true" style="font-size: 14px; font-weight: 400; color: color-mix(in srgb, var(--color-bg) 35%, transparent);">→</span></button>
+        <button onClick="{{ menuContato }}" style="display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 52px; padding: 0 var(--space-6); background: transparent; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--color-bg) 18%, transparent); cursor: pointer; font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-bg); text-align: left;" style-active="color: var(--color-accent-400);"><span style="{{ estiloMenuContato }}">Contato</span><span aria-hidden="true" style="font-size: 14px; font-weight: 400; color: color-mix(in srgb, var(--color-bg) 35%, transparent);">→</span></button>
+      </nav>
+    </sc-if>
   </div>
 
   
@@ -129,7 +143,7 @@
       <div class="trilho" ref="{{ trilho }}" style="{{ estiloGrade }}">
         <sc-if value="{{ ver1 }}" hint-placeholder-val="{{ true }}">
           <article style="{{ estiloCard }}" onClick="{{ abrirCaso1 }}">
-            <div style="width: 100%; aspect-ratio: 16 / 10; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--space-3); padding: var(--space-5); box-sizing: border-box;">
+            <div style="width: 100%; aspect-ratio: 16 / 10; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--space-3); padding: var(--space-4); box-sizing: border-box;">
               <span style="display: block; width: 32px; height: 2px; background: var(--color-accent);"></span>
               <p style="margin: 0; font-family: var(--font-heading); font-size: clamp(20px, 2.2vw, 28px); line-height: 0.95; letter-spacing: -0.035em; color: #f3f2f2;"><span style="font-weight: 300;">em </span><strong style="font-weight: 800;">breve</strong><span style="font-weight: 300;">...</span></p>
             </div>
@@ -462,15 +476,15 @@
           </div>
         </div>
         <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 0;">
-          <div style="padding: 0 0 var(--space-5); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent);">
+          <div style="padding: 0 0 var(--space-4); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent);">
             <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O pedido</h4>
             <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Criar uma peça que comunicasse a parceria da multi com o parque shopping.</p>
           </div>
-          <div style="padding: var(--space-5) 0; border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent);">
+          <div style="padding: var(--space-4) 0; border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent);">
             <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O que eu fiz</h4>
             <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Direção - Dop e edição.</p>
           </div>
-          <div style="padding: var(--space-5) 0;">
+          <div style="padding: var(--space-4) 0;">
             <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">Entrega</h4>
             <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Entrega para as redes sociais das marcas</p>
             
@@ -577,6 +591,22 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    this.medirSecao = () => {
+      if (this.state.view && this.state.view !== "home") { if (this.state.secao !== "trabalhos") this.setState({ secao: "trabalhos" }); return; }
+      const lim = 56 + window.innerHeight * 0.3;
+      let atual = "topo";
+      for (const id of ["topo", "reel", "trabalhos", "sobre", "contato"]) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= lim) atual = id;
+      }
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) atual = "contato";
+      if (atual !== this.state.secao) this.setState({ secao: atual });
+    };
+    window.addEventListener("scroll", this.medirSecao, { passive: true });
+    setTimeout(this.medirSecao, 300);
+    this.medirBarra = () => this.setState({ barraLarga: window.innerWidth >= 760 });
+    this.medirBarra();
+    window.addEventListener("resize", this.medirBarra);
     for (let k = 1; k <= 7; k++) {
       fetch(`assets/caso${k}.mp4`, { method: "HEAD" })
         .then((r) => {
@@ -636,6 +666,27 @@ class Component extends DCLogic {
       const semMovimento = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
       el.scrollTo({ left: alvo, behavior: semMovimento ? "auto" : "smooth" });
     };
+  }
+
+  componentDidUpdate(pp, ps) {
+    if (ps.view !== this.state.view && this.medirSecao) setTimeout(this.medirSecao, 80);
+  }
+
+  estilosAtivos() {
+    const sec = this.state.secao || "topo";
+    const sub = (on) => on ? { textDecorationLine: "underline", textDecorationColor: "var(--color-accent)", textDecorationThickness: "1px", textUnderlineOffset: "7px" } : { textDecorationLine: "none" };
+    const out = {};
+    for (const [k, id] of [["Topo","topo"],["Reel","reel"],["Trabalhos","trabalhos"],["Sobre","sobre"],["Contato","contato"]]) {
+      const on = sec === id;
+      out["estiloLink" + k] = { background: "transparent", border: 0, padding: "var(--space-2) 0", cursor: "pointer", fontFamily: "var(--font-body)", fontSize: 14, fontWeight: on ? 700 : 500, color: on ? "var(--color-bg)" : "color-mix(in srgb, var(--color-bg) 70%, transparent)", whiteSpace: "nowrap", ...sub(on) };
+      out["estiloMenu" + k] = { fontWeight: on ? 800 : 500, ...sub(on) };
+    }
+    return out;
+  }
+
+  fecharE(id) {
+    const ir = this.irSecao(id);
+    return () => { this.setState({ menuAberto: false }); ir(); };
   }
 
   irSecao(id) {
@@ -710,6 +761,32 @@ class Component extends DCLogic {
       filtrarClipes: this.filtrar("clipe"),
       ver4: mostra("p4"), ver5: mostra("p5"), ver6: mostra("p6"), ver7: mostra("p7"),
       naHome: v === "home",
+      barraLarga: this.state.barraLarga !== false,
+      barraEstreita: this.state.barraLarga === false,
+      menuAberto: !!this.state.menuAberto,
+      menuOculto: !this.state.menuAberto,
+      ...this.estilosAtivos(),
+      estiloMenu: {
+        position: "absolute", top: "100%", left: 0, right: 0,
+        display: "flex", flexDirection: "column",
+        background: "var(--color-text)",
+        borderBottom: "2px solid color-mix(in srgb, var(--color-bg) 22%, transparent)",
+        boxShadow: "var(--shadow-lg)",
+        opacity: this.state.menuAberto ? 1 : 0,
+        transform: this.state.menuAberto ? "translateY(0)" : "translateY(-12px)",
+        visibility: this.state.menuAberto ? "visible" : "hidden",
+        pointerEvents: this.state.menuAberto ? "auto" : "none",
+        transition: this.state.menuAberto
+          ? "opacity 260ms cubic-bezier(0.2,0.7,0.2,1), transform 320ms cubic-bezier(0.2,0.7,0.2,1), visibility 0s"
+          : "opacity 180ms ease, transform 220ms ease, visibility 0s 220ms"
+      },
+      rotuloMenu: this.state.menuAberto ? "Fechar ✕" : "Menu",
+      alternarMenu: () => this.setState(s => ({ menuAberto: !s.menuAberto })),
+      menuTopo: this.fecharE("topo"),
+      menuReel: this.fecharE("reel"),
+      menuTrabalhos: this.fecharE("trabalhos"),
+      menuSobre: this.fecharE("sobre"),
+      menuContato: this.fecharE("contato"),
       caso1: v === "caso1",
       caso2: v === "caso2",
       caso3: v === "caso3",
