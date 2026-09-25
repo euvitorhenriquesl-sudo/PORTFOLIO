@@ -28,20 +28,18 @@
   .trilho::-webkit-scrollbar-thumb { background: color-mix(in srgb, #f3f2f2 30%, transparent); }
   @keyframes marquee-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .marquee { mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
-  .marquee-track { animation: marquee-slide 38s linear infinite; }
+  .marquee-track { animation: marquee-slide 70s linear infinite; }
   .marquee:hover .marquee-track { animation-play-state: paused; }
   .marquee-track img { opacity: 0.68; transition: opacity 0.25s ease; flex: none; }
   .marquee-track img:hover { opacity: 1; }
   .marquee-claro .marquee-track img { filter: brightness(0); opacity: 0.75; }
   .marquee-claro .marquee-track img:hover { opacity: 1; }
   .set-track { animation: marquee-slide 48s linear infinite; }
+  .revelar { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.2,0.7,0.2,1), transform 0.9s cubic-bezier(0.2,0.7,0.2,1); }
+  .revelar.visivel { opacity: 1; transform: none; }
   .marquee:hover .set-track { animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce) {
-    .set-track { animation: none; flex-wrap: wrap; width: auto !important; }
-    .set-track [aria-hidden] { display: none; }
-    .marquee { mask-image: none; -webkit-mask-image: none; }
-    .marquee-track { animation: none; flex-wrap: wrap; width: auto !important; row-gap: var(--space-6); }
-    .marquee-track img[aria-hidden] { display: none; }
+    .revelar { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
 </style>
 </helmet>
@@ -79,12 +77,12 @@
 
   <sc-if value="{{ naHome }}" hint-placeholder-val="{{ true }}">
   <div>
-    <div data-screen-label="Início + Reel" style="width: calc(100% - 2 * var(--space-3)); margin: var(--space-3) auto; border-radius: 28px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
-    <section id="topo" style="position: relative; height: 84vh; min-height: 520px; overflow: hidden;">
+    <div data-screen-label="Início + Reel" style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; box-sizing: border-box; padding: 0; margin: var(--space-3) auto; border-radius: 28px; overflow: hidden; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
+    <section id="topo" style="position: relative; height: 78vh; min-height: 480px; max-height: 760px; overflow: hidden; border-radius: 28px 28px 0 0;">
       <div class="grayscale" style="position: absolute; inset: 0;">
         <img src="assets/img/v2-hero.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 58.74882952644481%; display: block;">
       </div>
-      <div style="position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in srgb, var(--color-text) 92%, transparent) 0%, color-mix(in srgb, var(--color-text) 35%, transparent) 55%, transparent 100%); pointer-events: none; display: block"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in srgb, var(--color-bg) 5%, var(--color-text)) 0%, color-mix(in srgb, color-mix(in srgb, var(--color-bg) 5%, var(--color-text)) 85%, transparent) 14%, color-mix(in srgb, var(--color-text) 40%, transparent) 55%, transparent 100%); pointer-events: none; display: block"></div>
       <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-6); max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-4); pointer-events: none;">
         <p style="margin: 0; font-size: 14px; color: color-mix(in srgb, var(--color-bg) 70%, transparent);">Vitor Santos · Maceió, Brasil</p>
         <h1 style="margin: 0; font-family: var(--font-heading); font-weight: 800; font-size: clamp(40px, 8.5vw, 116px); line-height: 0.9; letter-spacing: -0.04em;">Diretor &amp; diretor de fotografia.</h1>
@@ -95,10 +93,10 @@
       </div>
     </section>
 
-    <section id="reel" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: var(--space-8) var(--space-6);">
-      <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden;">
+    <section id="reel" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: var(--space-3);">
+      <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden; border-radius: 28px 28px 0 0;">
         <img src="assets/reel-poster.jpg" alt="Frame do reel Brand Experience - Mirante Sunset Bar" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
-        <iframe ref="{{ montarVimeo }}" src="https://player.vimeo.com/video/1229622864?autoplay=1&amp;muted=1&amp;loop=1&amp;autopause=0&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Reel" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none;"></iframe>
+        <iframe ref="{{ montarVimeo }}" src="https://player.vimeo.com/video/1229622864?autoplay=1&amp;muted=1&amp;loop=1&amp;autopause=0&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Reel" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; border: 0; pointer-events: none; transform: translate(-50%, -50%) scale(1.04);"></iframe>
         <div style="position: absolute; left: var(--space-4); bottom: var(--space-4); right: var(--space-4); display: flex; align-items: center; gap: var(--space-4);">
           <span style="font-family: var(--font-heading); font-weight: 600; font-size: 15px; color: var(--color-bg); text-shadow: 0 1px 8px rgba(0,0,0,0.6);">Brand Experience - Mirante Sunset Bar</span>
           <button onClick="{{ alternarSom }}" style="margin-left: auto; background: color-mix(in srgb, #000 45%, transparent); border: 1px solid color-mix(in srgb, var(--color-bg) 40%, transparent); color: var(--color-bg); cursor: pointer; font-family: var(--font-body); font-size: 13px; padding: var(--space-2) var(--space-3);" style-hover="border-color: var(--color-accent); color: var(--color-accent);">{{ rotuloSom }}</button>
@@ -110,23 +108,39 @@
     <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: var(--color-bg); color: var(--color-text);">
       <p style="margin: 0 0 var(--space-4); font-size: 13px; color: color-mix(in srgb, var(--color-text) 55%, transparent);">Quem eu filmei</p>
       <div class="marquee marquee-claro" style="overflow: hidden; padding: var(--space-4) 0 0;">
-        <div class="marquee-track" style="display: flex; align-items: center; gap: var(--space-8); width: max-content;">
-          <img src="assets/logos/netflix.png" alt="Netflix" style="height: 30px; width: auto;">
-          <img src="assets/logos/celebration.png" alt="Réveillon Celebration" style="height: 58px; width: auto;">
-          <img src="assets/logos/brahma.png" alt="Brahma" style="height: 28px; width: auto;">
-          <img src="assets/logos/hopbros.png" alt="Hop Bros" style="height: 44px; width: auto;">
-          <img src="assets/logos/md.png" alt="Moura Dubeux" style="height: 40px; width: auto;">
-          <img src="assets/logos/comafer.png" alt="Comafer" style="height: 26px; width: auto;">
-          <img src="assets/logos/parque.png" alt="Parque Shopping" style="height: 38px; width: auto;">
-          <img src="assets/logos/maikai.png" alt="Maikai" style="height: 20px; width: auto;">
-          <img src="assets/logos/netflix.png" alt="" aria-hidden="true" style="height: 30px; width: auto;">
-          <img src="assets/logos/celebration.png" alt="" aria-hidden="true" style="height: 58px; width: auto;">
-          <img src="assets/logos/brahma.png" alt="" aria-hidden="true" style="height: 28px; width: auto;">
-          <img src="assets/logos/hopbros.png" alt="" aria-hidden="true" style="height: 44px; width: auto;">
-          <img src="assets/logos/md.png" alt="" aria-hidden="true" style="height: 40px; width: auto;">
-          <img src="assets/logos/comafer.png" alt="" aria-hidden="true" style="height: 26px; width: auto;">
-          <img src="assets/logos/parque.png" alt="" aria-hidden="true" style="height: 38px; width: auto;">
-          <img src="assets/logos/maikai.png" alt="" aria-hidden="true" style="height: 20px; width: auto;">
+        <div class="marquee-track" style="display: flex; align-items: center; gap: calc(var(--space-8) * 1.25); width: max-content;">
+          <img src="assets/logos/netflix.png" alt="Netflix" style="height: 40px; width: auto;">
+          <img src="assets/logos/celebration.png" alt="Réveillon Celebration" style="height: 78px; width: auto;">
+          <img src="assets/logos/brahma.png" alt="Brahma" style="height: 38px; width: auto;">
+          <img src="assets/logos/hopbros.png" alt="Hop Bros" style="height: 58px; width: auto;">
+          <img src="assets/logos/md.png" alt="Moura Dubeux" style="height: 54px; width: auto;">
+          <img src="assets/logos/comafer.png" alt="Comafer" style="height: 36px; width: auto;">
+          <img src="assets/logos/parque.png" alt="Parque Shopping" style="height: 50px; width: auto;">
+          <img src="assets/logos/maikai.png" alt="Maikai" style="height: 28px; width: auto;">
+          <img src="assets/logos/netflix.png" alt="" aria-hidden="true" style="height: 40px; width: auto;">
+          <img src="assets/logos/celebration.png" alt="" aria-hidden="true" style="height: 78px; width: auto;">
+          <img src="assets/logos/brahma.png" alt="" aria-hidden="true" style="height: 38px; width: auto;">
+          <img src="assets/logos/hopbros.png" alt="" aria-hidden="true" style="height: 58px; width: auto;">
+          <img src="assets/logos/md.png" alt="" aria-hidden="true" style="height: 54px; width: auto;">
+          <img src="assets/logos/comafer.png" alt="" aria-hidden="true" style="height: 36px; width: auto;">
+          <img src="assets/logos/parque.png" alt="" aria-hidden="true" style="height: 50px; width: auto;">
+          <img src="assets/logos/maikai.png" alt="" aria-hidden="true" style="height: 28px; width: auto;">
+          <img src="assets/logos/netflix.png" alt="" aria-hidden="true" style="height: 40px; width: auto;">
+          <img src="assets/logos/celebration.png" alt="" aria-hidden="true" style="height: 78px; width: auto;">
+          <img src="assets/logos/brahma.png" alt="" aria-hidden="true" style="height: 38px; width: auto;">
+          <img src="assets/logos/hopbros.png" alt="" aria-hidden="true" style="height: 58px; width: auto;">
+          <img src="assets/logos/md.png" alt="" aria-hidden="true" style="height: 54px; width: auto;">
+          <img src="assets/logos/comafer.png" alt="" aria-hidden="true" style="height: 36px; width: auto;">
+          <img src="assets/logos/parque.png" alt="" aria-hidden="true" style="height: 50px; width: auto;">
+          <img src="assets/logos/maikai.png" alt="" aria-hidden="true" style="height: 28px; width: auto;">
+          <img src="assets/logos/netflix.png" alt="" aria-hidden="true" style="height: 40px; width: auto;">
+          <img src="assets/logos/celebration.png" alt="" aria-hidden="true" style="height: 78px; width: auto;">
+          <img src="assets/logos/brahma.png" alt="" aria-hidden="true" style="height: 38px; width: auto;">
+          <img src="assets/logos/hopbros.png" alt="" aria-hidden="true" style="height: 58px; width: auto;">
+          <img src="assets/logos/md.png" alt="" aria-hidden="true" style="height: 54px; width: auto;">
+          <img src="assets/logos/comafer.png" alt="" aria-hidden="true" style="height: 36px; width: auto;">
+          <img src="assets/logos/parque.png" alt="" aria-hidden="true" style="height: 50px; width: auto;">
+          <img src="assets/logos/maikai.png" alt="" aria-hidden="true" style="height: 28px; width: auto;">
         </div>
       </div>
     </section>
@@ -605,6 +619,7 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    setTimeout(() => this.observarRevelar(), 60);
     this.medirSecao = () => {
       if (this.state.view && this.state.view !== "home") { if (this.state.secao !== "trabalhos") this.setState({ secao: "trabalhos" }); return; }
       const lim = 56 + window.innerHeight * 0.3;
@@ -682,7 +697,24 @@ class Component extends DCLogic {
     };
   }
 
+  observarRevelar() {
+    if (!("IntersectionObserver" in window)) return;
+    if (!this.obsRevelar) {
+      this.obsRevelar = new IntersectionObserver((ents) => {
+        for (const en of ents) if (en.isIntersecting) { en.target.classList.add("visivel"); this.obsRevelar.unobserve(en.target); }
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }
+    const alvos = document.querySelectorAll("section:not(.revelar), footer:not(.revelar), article:not(.revelar)");
+    let i = 0;
+    alvos.forEach((el) => {
+      if (el.tagName === "ARTICLE") el.style.transitionDelay = (i++ % 3) * 90 + "ms";
+      el.classList.add("revelar");
+      this.obsRevelar.observe(el);
+    });
+  }
+
   componentDidUpdate(pp, ps) {
+    setTimeout(() => this.observarRevelar(), 30);
     if (ps.view !== this.state.view && this.medirSecao) setTimeout(this.medirSecao, 80);
   }
 
