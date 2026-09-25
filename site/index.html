@@ -35,6 +35,10 @@
   .marquee-claro .marquee-track img { filter: brightness(0); opacity: 0.75; }
   .marquee-claro .marquee-track img:hover { opacity: 1; }
   .set-track { animation: marquee-slide 48s linear infinite; }
+  .trilho article { transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2,0.7,0.2,1); }
+  .trilho.escolhendo article:not(.destaque) { opacity: 0.25; transform: scale(0.97); }
+  .trilho article.destaque { transform: scale(1.04); position: relative; z-index: 2; }
+  .trilho article.destaque > div:first-child { outline: 2px solid var(--color-accent); outline-offset: 4px; }
   .revelar { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.2,0.7,0.2,1), transform 0.9s cubic-bezier(0.2,0.7,0.2,1); }
   .revelar.visivel { opacity: 1; transform: none; }
   .marquee:hover .set-track { animation-play-state: paused; }
@@ -704,7 +708,7 @@ class Component extends DCLogic {
         for (const en of ents) if (en.isIntersecting) { en.target.classList.add("visivel"); this.obsRevelar.unobserve(en.target); }
       }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
     }
-    const alvos = document.querySelectorAll("section:not(.revelar), footer:not(.revelar), article:not(.revelar)");
+    const alvos = document.querySelectorAll("section:not(.revelar), footer:not(.revelar)");
     let i = 0;
     alvos.forEach((el) => {
       if (el.tagName === "ARTICLE") el.style.transitionDelay = (i++ % 3) * 90 + "ms";
@@ -742,6 +746,24 @@ class Component extends DCLogic {
         if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
       };
       if (id !== "contato" && this.state.view !== "home") { this.setState({ view: "home" }, () => setTimeout(go, 60)); } else go();
+    };
+  }
+
+  abrir(v) {
+    return (e) => {
+      const card = e && e.currentTarget;
+      const trilho = card && card.parentElement && card.closest(".trilho");
+      const reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!card || !trilho || reduz || this.abrindo) { this.ver(v)(); return; }
+      this.abrindo = true;
+      trilho.classList.add("escolhendo");
+      card.classList.add("destaque");
+      setTimeout(() => {
+        trilho.classList.remove("escolhendo");
+        card.classList.remove("destaque");
+        this.abrindo = false;
+        this.ver(v)();
+      }, 520);
     };
   }
 
@@ -846,13 +868,13 @@ class Component extends DCLogic {
       irTrabalhos: this.irSecao("trabalhos"),
       irSobre: this.irSecao("sobre"),
       irContato: this.irSecao("contato"),
-      abrirCaso1: this.ver("caso1"),
-      abrirCaso2: this.ver("caso2"),
-      abrirCaso3: this.ver("caso3"),
-      abrirCaso4: this.ver("caso4"),
-      abrirCaso5: this.ver("caso5"),
-      abrirCaso6: this.ver("caso6"),
-      abrirCaso7: this.ver("caso7"),
+      abrirCaso1: this.abrir("caso1"),
+      abrirCaso2: this.abrir("caso2"),
+      abrirCaso3: this.abrir("caso3"),
+      abrirCaso4: this.abrir("caso4"),
+      abrirCaso5: this.abrir("caso5"),
+      abrirCaso6: this.abrir("caso6"),
+      abrirCaso7: this.abrir("caso7"),
       filtrarTodos: this.filtrar("todos"),
       filtrarPublicidade: this.filtrar("marca"),
       filtrarEventos: this.filtrar("evento"),
