@@ -251,6 +251,20 @@
             </div>
           </article>
         </sc-if>
+
+        <sc-if value="{{ ver8 }}" hint-placeholder-val="{{ false }}">
+          <article style="{{ estiloCard }}" onClick="{{ abrirCaso8 }}">
+            <div style="width: 100%; aspect-ratio: 16 / 10; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; background: #000;">
+              <div style="min-width: 0; height: 100%; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-proj-08-1" shape="rect" src="assets/img/v2-proj-08-1.webp" placeholder="Frame 1"></image-slot></div>
+              <div style="min-width: 0; height: 100%; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-proj-08-2" shape="rect" src="assets/img/v2-proj-08-2.webp" placeholder="Frame 2"></image-slot></div>
+              <div style="min-width: 0; height: 100%; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-proj-08-3" shape="rect" src="assets/img/v2-proj-08-3.webp" placeholder="Frame 3"></image-slot></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-3);">
+              <h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em;">Marina Ferrari - Strava</h3>
+              <span style="font-size: 13px; color: color-mix(in srgb, var(--color-bg) 60%, transparent); white-space: nowrap;">2026</span>
+            </div>
+          </article>
+        </sc-if>
       </div>
     </section>
 
@@ -262,7 +276,7 @@
         <div>
           <h2 style="margin: 0 0 var(--space-4); font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em;">Vitor Santos</h2>
           <p style="font-size: 17px; line-height: 1.6; max-width: 56ch; color: color-mix(in srgb, var(--color-bg) 88%, transparent);"><span style="caret-color: rgb(161, 156, 142); color: rgb(161, 156, 142); font-family: Fraunces, Georgia, &quot;Times New Roman&quot;, serif; font-size: 16px">Eu conto histórias<span class="Apple-converted-space"> </span></span><em style="color: var(--color-accent); font-family: Fraunces, Georgia, &quot;Times New Roman&quot;, serif; font-size: 16px; text-decoration-thickness: auto; text-decoration-style: solid;">com luz, movimento e ritmo</em><span style="caret-color: rgb(161, 156, 142); color: rgb(161, 156, 142); font-family: Fraunces, Georgia, &quot;Times New Roman&quot;, serif; font-size: 16px"><span class="Apple-converted-space"> </span>— do primeiro enquadramento ao corte final.</span></p>
-          <div style="font-size: 17px; line-height: 1.6; max-width: 56ch; color: color-mix(in srgb, var(--color-bg) 88%, transparent);"><p style="margin: 0px 0px 22px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent); font-size: medium; font-family: &quot;Instrument Sans&quot;, -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; text-decoration-thickness: auto; text-decoration-style: solid;">Como diretor, sou apaixonado pelo mundo da criação. Atuo em áreas como eventos, campanhas publicitárias e branded content, sempre com o objetivo de entregar o meu melhor aos meus clientes.</p><p style="margin: 0px 0px 22px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent); font-size: medium; font-family: &quot;Instrument Sans&quot;, -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; text-decoration-thickness: auto; text-decoration-style: solid;">Meu trabalho une narrativa e um visual forte a um padrão de produção que eleva a percepção de quem está na tela — porque cada projeto é pensado para gerar impacto real: não apenas imagens bonitas, mas conteúdo que comunica e representa a identidade de quem contrata.</p></div>
+          <div style="font-size: 17px; line-height: 1.6; max-width: 56ch; color: color-mix(in srgb, var(--color-bg) 88%, transparent);"><p style="margin: 0px 0px 22px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent); font-size: medium; font-family: &quot;Instrument Sans&quot;, -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; text-decoration-thickness: auto; text-decoration-style: solid;">Como diretor, sou apaixonado pelo mundo da criação. Atuo em áreas como eventos, campanhas publicitárias e social content, sempre com o objetivo de entregar o meu melhor aos meus clientes.</p><p style="margin: 0px 0px 22px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent); font-size: medium; font-family: &quot;Instrument Sans&quot;, -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; text-decoration-thickness: auto; text-decoration-style: solid;">Meu trabalho une narrativa e um visual forte a um padrão de produção que eleva a percepção de quem está na tela — porque cada projeto é pensado para gerar impacto real: não apenas imagens bonitas, mas conteúdo que comunica e representa a identidade de quem contrata.</p></div>
           <a href="https://wa.me/message/VJOB7NHIWNNSP1" style="display: inline-flex; align-items: center; gap: var(--space-3); margin-top: var(--space-2); text-decoration: none; color: var(--color-bg); border-bottom: 2px solid var(--color-accent); padding-bottom: var(--space-1); font-family: var(--font-heading); font-weight: 600; font-size: 15px;">Falar comigo</a>
         </div>
       </div>
@@ -570,6 +584,39 @@
     </section>
   </sc-if>
 
+  <sc-if value="{{ caso8 }}" hint-placeholder-val="{{ false }}">
+    <section style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text));">
+      <button onClick="{{ irParaHome }}" style="background: transparent; border: 0; cursor: pointer; color: color-mix(in srgb, var(--color-bg) 70%, transparent); font-family: var(--font-body); font-size: 14px; padding: 0; margin-bottom: var(--space-6);" style-hover="color: var(--color-accent);">Voltar aos trabalhos</button>
+      <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Marina Ferrari - Strava</h1>
+      <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">2026 · Filme de marca</p>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-8); align-items: stretch; border-top: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent); padding-top: var(--space-6);">
+        <div style="flex: 0 1 420px; min-width: 260px; display: flex; flex-direction: column; gap: var(--space-3);">
+          <div style="position: relative; width: 100%; aspect-ratio: 9 / 16; background: #000; overflow: hidden;">
+            <iframe src="https://player.vimeo.com/video/1232384363?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Marina Ferrari - Strava" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"></iframe>
+          </div>
+          <div style="display: flex; justify-content: space-between; gap: var(--space-4); font-size: 13px; color: color-mix(in srgb, var(--color-bg) 55%, transparent);">
+            <span>Vertical 9:16 · 27s</span>
+            <span>Reels / Stories</span>
+          </div>
+        </div>
+        <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 0;">
+          <div style="padding: 0 0 var(--space-4); border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent);">
+            <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O pedido</h4>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Marina queria um Reels impactante, que comunicasse que ela irá correr a maratona de Nova York sendo patrocinada pela New Balance e Strava.</p>
+          </div>
+          <div style="padding: var(--space-4) 0; border-bottom: 2px solid color-mix(in srgb, var(--color-bg) 25%, transparent);">
+            <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">O que eu fiz</h4>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Direção e captação.</p>
+          </div>
+          <div style="padding: var(--space-4) 0;">
+            <h4 style="margin: 0 0 var(--space-2); font-size: 17px;">Entrega</h4>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Conteúdo em Reels para todas as redes sociais.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
   <section id="contato" style="width: calc(100% - 2 * var(--space-3)); max-width: 1320px; margin: var(--space-3) auto; box-sizing: border-box; padding: var(--space-8) var(--space-6); border-radius: 28px; background: color-mix(in srgb, var(--color-bg) 5%, var(--color-text)); position: relative">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); align-items: start; position: relative">
       <div>
@@ -781,7 +828,7 @@ class Component extends DCLogic {
   renderVals() {
     const v = this.state.view;
     const f = this.state.filtro;
-    const cat = { p1: "marca", p2: "evento", p3: "evento", p4: "evento", p5: "marca", p6: "marca", p7: "clipe" };
+    const cat = { p1: "marca", p2: "evento", p3: "evento", p4: "evento", p5: "marca", p6: "marca", p7: "clipe", p8: "marca" };
     const mostra = (id) => f === "todos" || f === cat[id];
     const linha = (k) => (f === k ? "var(--color-accent)" : "transparent");
     const cor = (k) => (f === k ? "var(--color-bg)" : "color-mix(in srgb, var(--color-bg) 55%, transparent)");
@@ -827,7 +874,7 @@ class Component extends DCLogic {
       linhaTodos: linha("todos"), linhaMarca: linha("marca"), linhaEvento: linha("evento"), linhaClipe: linha("clipe"),
       corTodos: cor("todos"), corMarca: cor("marca"), corEvento: cor("evento"), corClipe: cor("clipe"),
       filtrarClipes: this.filtrar("clipe"),
-      ver4: mostra("p4"), ver5: mostra("p5"), ver6: mostra("p6"), ver7: mostra("p7"),
+      ver4: mostra("p4"), ver5: mostra("p5"), ver6: mostra("p6"), ver7: mostra("p7"), ver8: mostra("p8"),
       naHome: v === "home",
       barraLarga: this.state.barraLarga !== false,
       barraEstreita: this.state.barraLarga === false,
@@ -862,6 +909,7 @@ class Component extends DCLogic {
       caso5: v === "caso5",
       caso6: v === "caso6",
       caso7: v === "caso7",
+      caso8: v === "caso8",
       irParaHome: this.ver("home"),
       irTopo: this.irSecao("topo"),
       irReel: this.irSecao("reel"),
@@ -875,6 +923,7 @@ class Component extends DCLogic {
       abrirCaso5: this.abrir("caso5"),
       abrirCaso6: this.abrir("caso6"),
       abrirCaso7: this.abrir("caso7"),
+      abrirCaso8: this.abrir("caso8"),
       filtrarTodos: this.filtrar("todos"),
       filtrarPublicidade: this.filtrar("marca"),
       filtrarEventos: this.filtrar("evento"),
