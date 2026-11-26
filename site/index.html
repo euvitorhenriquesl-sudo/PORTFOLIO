@@ -169,9 +169,8 @@
       <div class="trilho" ref="{{ trilho }}" style="{{ estiloGrade }}">
         <sc-if value="{{ ver1 }}" hint-placeholder-val="{{ true }}">
           <article style="{{ estiloCard }}" onClick="{{ abrirCaso1 }}">
-            <div style="width: 100%; aspect-ratio: 16 / 10; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: var(--space-3); padding: var(--space-4); box-sizing: border-box;">
-              <span style="display: block; width: 32px; height: 2px; background: var(--color-accent);"></span>
-              <p style="margin: 0; font-family: var(--font-heading); font-size: clamp(20px, 2.2vw, 28px); line-height: 0.95; letter-spacing: -0.035em; color: #f3f2f2;"><span style="font-weight: 300;">em </span><strong style="font-weight: 800;">breve</strong><span style="font-weight: 300;">...</span></p>
+            <div style="width: 100%; aspect-ratio: 16 / 10; background: #000; overflow: hidden;">
+              <img src="https://i.vimeocdn.com/video/2230747924-d7f903db5560fe5f2a77802cb19b0f48484df2892d7b12fd3e526426e29e3a76-d_1280x720" alt="Dramalândia · Netflix — planos aéreos" loading="lazy" decoding="async" width="1280" height="720" style="display: block; width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); padding-top: var(--space-3);">
               <h3 style="margin: 0; font-size: 20px; letter-spacing: -0.02em;">Dramalândia · Netflix</h3>
@@ -329,8 +328,7 @@
       <h1 style="margin: 0 0 var(--space-4); font-size: clamp(32px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.035em; max-width: 20ch;">Dramalândia · Mansão Velho Chico</h1>
       <p style="margin: 0 0 var(--space-6); font-size: 15px; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Netflix · Brand experience</p>
       <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden; margin-bottom: var(--space-8);">
-        <image-slot id="v2-caso1-still" shape="rect" placeholder="Frame principal"></image-slot>
-        <video ref="{{ refVideo1 }}" controls="{{ true }}" playsInline="{{ true }}" preload="metadata" style="{{ estiloVideo1 }}"></video>
+        <iframe src="https://player.vimeo.com/video/1250175445?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Dramalândia · Mansão Velho Chico" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"></iframe>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); max-width: 1100px;">
         <div>
@@ -346,11 +344,6 @@
           <p style="margin: 0; font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--color-bg) 65%, transparent);">Shoots em [16x9] e [9x16] para diversas plataformas.</p>
           
         </div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-2); margin-top: var(--space-8);">
-        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso1-a" shape="rect" placeholder="Still"></image-slot></div>
-        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso1-b" shape="rect" placeholder="Still"></image-slot></div>
-        <div style="aspect-ratio: 3 / 2; background: color-mix(in srgb, var(--color-bg) 10%, transparent);"><image-slot id="v2-caso1-c" shape="rect" placeholder="Still"></image-slot></div>
       </div>
     </section>
   </sc-if>
